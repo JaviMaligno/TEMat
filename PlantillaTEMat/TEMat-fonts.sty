@@ -1,0 +1,385 @@
+%% TEMat-fonts.cls
+%% Copyright 2017 Asociación Nacional de Estudiantes de Matemáticas
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+%   http://www.latex-project.org/lppl/
+% And version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainers of this work are
+%   Comisión de publicaciones de la
+%   Asociación Nacional de Estudiantes de Matemáticas
+%   mailto:publicaciones@anemat.com
+%
+%   Isaac Sánchez Barrera
+%   mailto:tex@isaac.sb
+%
+%   This work consists of the files TEMat-article.cls and TEMat-fonts.sty
+
+\RequirePackage{expl3}[2015/11/15]
+\RequirePackage{l3keys2e}
+\ProvidesExplPackage
+  {TEMat-fonts}
+  {2017/10/23}
+  {1.0.0}
+  {TEMat fonts for standalone and more}
+
+\prg_new_conditional:Nnn \TEMatF_unicode_engine: { p, T, F, TF } {
+  \bool_if:nTF {\sys_if_engine_luatex_p: || \sys_if_engine_xetex_p:}
+  {\prg_return_true:}{\prg_return_false:}
+}
+
+\prg_new_conditional:Npnn \TEMatF_packagelater:nn #1#2 { p, T, F, TF } {
+  \@ifpackagelater{#1}{#2}{\prg_return_true:}{\prg_return_false:}
+}
+
+\prg_new_conditional:Npnn \TEMatF_packageloaded:n #1 { p, T, F, TF } {
+  \@ifpackageloaded{#1}{\prg_return_true:}{\prg_return_false:}
+}
+
+\bool_new:N \g__TEMatF_mathastext_bool
+\bool_gset:Nn \g__TEMatF_mathastext_bool {\TEMatF_unicode_engine_p:}
+
+\tl_new:N \g__TEMatF_babelmain_tl
+\tl_gset:Nn \g__TEMatF_babelmain_tl {spanish}
+
+\keys_define:nn { TEMatFpkgoptions } {
+  mathastext .bool_gset:N = \g__TEMatF_mathastext_bool,
+  mathastext .default:n = true,
+  
+  babel-main .tl_gset:N = \g__TEMatF_babelmain_tl,
+}
+
+\ProcessKeysOptions { TEMatFpkgoptions }
+
+% Desde la versión 2017/05/29 de expl3, l3regex forma parte del kernel
+% de LaTeX3 y no hace falta cargarlo individualmente.
+\TEMatF_packagelater:nnF { expl3 } { 2017/05/29 } {
+  \RequirePackage{l3regex}
+}
+
+\RequirePackage{afterpackage}
+
+\TEMatF_unicode_engine:TF
+  {
+    \RequirePackage[leqno]{amsmath}
+    \RequirePackage{amssymb,amsthm}
+    \RequirePackage[T1]{fontenc} % para las matemáticas de erewhon
+
+    \RequirePackage[no-math]{fontspec}
+
+    \msg_redirect_name:nnn
+      { fontspec }
+      { icu-feature-not-exist-in-font }
+      { none }
+    
+    \defaultfontfeatures[\rmfamily]{Numbers={Monospaced,Lining}}
+    \defaultfontfeatures[\rmfamily,\sffamily]{Ligatures=TeX}
+
+    \setmainfont{Erewhon}[
+      Extension=.otf,
+      UprightFont=*-Regular,
+      FontFace={m}{it}{*-Italic},
+      BoldFont=*-Bold,
+      FontFace={b}{n}{*-Bold},
+      BoldItalicFont=*-BoldItalic,
+      SlantedFont=*-RegularSlanted,
+      BoldSlantedFont=*-BoldSlanted,
+      Scale=1.0,
+      WordSpace=1.15,
+      NFSSFamily=erewhontext,
+    ]
+
+    \newdimen\orig@spc
+    \orig@spc=.211em  
+
+    \IncludeInRelease{2017/01/01}{\TEMatMathTextFonts}{Fuentes matemáticas}
+    \DeclareFontFamily{TU}{erewhonmath}{}
+    \DeclareFontShape{TU}{erewhonmath}{m}{n}%
+    {<-> \UnicodeFontFile{Erewhon-Regular}{}}%
+    {\fontdimen2\font=1.15\orig@spc}
+
+    \DeclareFontShape{TU}{erewhonmath}{b}{n}%
+    {<-> \UnicodeFontFile{Erewhon-Bold}{}}%
+    {\fontdimen2\font=1.15\orig@spc}
+    
+    \DeclareFontShape{TU}{erewhonmath}{bx}{n}%
+    {<-> \UnicodeFontFile{Erewhon-Bold}{}}%
+    {\fontdimen2\font=1.15\orig@spc}
+
+    \DeclareFontShape{TU}{erewhonmath}{m}{it}%
+    {<-> \UnicodeFontFile{Erewhon-Italic}{}}{\fontdimen2\font=0pt}
+
+     \DeclareFontShape{TU}{erewhonmath}{bx}{it}%
+    {<-> \UnicodeFontFile{Erewhon-BoldItalic}{}}{\fontdimen2\font=0pt}
+    \EndIncludeInRelease
+    
+    % \renewcommand\rmdefault{erewhontext}
+    \AtBeginDocument {
+      \renewcommand\rmdefault{erewhontext}
+      \renewcommand\familydefault{\rmdefault}
+      \fontfamily{\familydefault}\selectfont
+    }
+
+    \setmonofont{Inconsolatazi4}[
+      AutoFakeSlant,
+      BoldItalicFeatures={FakeSlant},
+      StylisticSet={1,3}, % varqu & varl
+      Extension=.otf,
+      UprightFont=*-Regular,
+      BoldFont=*-Bold,
+      Scale=1.0,
+      HyphenChar=None,
+    ]
+
+    \RequirePackage[scaled=0.96,semibold]{cabin} 
+  }
+  {
+    \RequirePackage[scaled=0.96,semibold]{cabin}
+    \RequirePackage[scaled=1.0,space=1.15]{erewhon}
+    \RequirePackage[varqu,varl,scaled=1.0]{inconsolata}
+    
+    \RequirePackage[T1]{fontenc}       % Uses 'T1' font encoding.
+    \RequirePackage[utf8]{inputenc}    % Uses unicode characters.
+    \RequirePackage[leqno]{amsmath}
+    \RequirePackage{amssymb,amsthm}
+    
+    \TEMatF_packagelater:nnF { inconsolata } { 2016/12/31 }
+      {% corrección cutre y rápida para las tildes en la i para
+       % versiones viejas de Erewhon con pdfLaTeX...
+        \def\activedotlessi{\def\i{i}}
+        \let\textscOrig=\textsc
+        \def\textsc{\bgroup\activedotlessi{}\textscA}
+        \def\textscA#1{\textscOrig{#1}\egroup}
+        \appto{\scshape}{\activedotlessi}
+      }
+  }
+
+\RequirePackage[%
+  main=\g__TEMatF_babelmain_tl,%
+  spanish]
+  {babel}
+\spanishsignitems
+
+\ExplSyntaxOff
+\@ifpackageloaded{tikz}{
+  \usetikzlibrary{babel}
+}{}
+\ExplSyntaxOn
+
+\AfterPackage{tikz} {
+  \usetikzlibrary{babel}
+}
+
+\RequirePackage{csquotes}
+
+% Corrección de las tildes en los operadores matemáticos en castellano
+% como mín, máx, lím...
+\accentedoperators
+\TEMatF_unicode_engine:F {
+  \cs_if_exist:NTF \es@op@ac@base {
+    \DeclareDocumentCommand\es@op@ac@base { m } {\text{\upshape\mdseries\'{#1}}}
+    \accentedoperators
+  }{
+    \unaccentedoperators
+  }
+}
+
+\RequirePackage[
+  erewhon,
+  timesmathacc,
+  amssymbols,
+  varbb,
+  bigdelims,
+  slantedGreek,
+  scaled=1.046]
+  {newtxmath}
+
+\TEMatF_unicode_engine:TF {
+  \TEMatF_packagelater:nnF { fontspec }{ 2017/01/01 } {
+    \bool_gset_false:N \g__TEMatF_mathastext_bool
+  }
+}{
+  \bool_if:nT { \g__TEMatF_mathastext_bool } {
+    \bool_gset_false:N \g__TEMatF_mathastext_bool
+  }
+  
+  \providecommand\bmmax{2}
+}
+\RequirePackage{bm} % negrita en las matemáticas
+
+\bool_if:nT { \g__TEMatF_mathastext_bool } {
+  \SetSymbolFont{letters}{normal}{TU}{erewhonmath}{m}{it}
+  \SetSymbolFont{letters}{bold}{TU}{erewhonmath}{bx}{it}
+  \SetMathAlphabet{\mathit}{normal}{TU}{erewhontext}{m}{it}
+  \DeclareSymbolFont{punct}{TU}{erewhontext}{m}{n}
+  \SetSymbolFont{punct}{bold}{TU}{erewhontext}{b}{n}
+  \DeclareSymbolFont{extra}{OML}{zutmi}{m}{it}
+  \SetSymbolFont{extra}{bold}{OML}{zutmi}{bx}{it}
+  
+  \DeclareMathSymbol{,}{\mathpunct}{punct}{"2C}
+  \DeclareMathSymbol{.}{\mathord}{punct}{"2E}
+  \DeclareMathSymbol{:}{\mathbin}{punct}{"3A}
+  \DeclareMathSymbol{;}{\mathpunct}{punct}{"3B}
+  
+  \re@DeclareMathSymbol{\imath}{\mathord}{extra}{123}
+  \re@DeclareMathSymbol{\jmath}{\mathord}{extra}{124}
+
+  \re@DeclareMathSymbol{\alpha}{\mathord}{extra}{11}
+  \re@DeclareMathSymbol{\beta}{\mathord}{extra}{12}
+  \re@DeclareMathSymbol{\gamma}{\mathord}{extra}{13}
+  \re@DeclareMathSymbol{\delta}{\mathord}{extra}{14}
+  \re@DeclareMathSymbol{\epsilon}{\mathord}{extra}{15}
+  \re@DeclareMathSymbol{\zeta}{\mathord}{extra}{16}
+  \re@DeclareMathSymbol{\eta}{\mathord}{extra}{17}
+  \re@DeclareMathSymbol{\theta}{\mathord}{extra}{18}
+  \re@DeclareMathSymbol{\iota}{\mathord}{extra}{19}
+  \re@DeclareMathSymbol{\kappa}{\mathord}{extra}{20}
+  \re@DeclareMathSymbol{\lambda}{\mathord}{extra}{21}
+  \re@DeclareMathSymbol{\mu}{\mathord}{extra}{22}
+  \re@DeclareMathSymbol{\nu}{\mathord}{extra}{23}
+  \re@DeclareMathSymbol{\xi}{\mathord}{extra}{24}
+  \re@DeclareMathSymbol{\pi}{\mathord}{extra}{25}
+  \re@DeclareMathSymbol{\rho}{\mathord}{extra}{26}
+  \re@DeclareMathSymbol{\sigma}{\mathord}{extra}{27}
+  \re@DeclareMathSymbol{\tau}{\mathord}{extra}{28}
+  \re@DeclareMathSymbol{\upsilon}{\mathord}{extra}{29}
+  \re@DeclareMathSymbol{\phi}{\mathord}{extra}{30}
+  \re@DeclareMathSymbol{\chi}{\mathord}{extra}{31}
+  \re@DeclareMathSymbol{\psi}{\mathord}{extra}{32}
+  \re@DeclareMathSymbol{\omega}{\mathord}{extra}{33}
+  \re@DeclareMathSymbol{\varepsilon}{\mathord}{extra}{34}
+  \re@DeclareMathSymbol{\vartheta}{\mathord}{extra}{35}
+  \re@DeclareMathSymbol{\varpi}{\mathord}{extra}{36}
+  \re@DeclareMathSymbol{\varrho}{\mathord}{extra}{37}
+  \re@DeclareMathSymbol{\varsigma}{\mathord}{extra}{38}
+  \re@DeclareMathSymbol{\varphi}{\mathord}{extra}{39}
+
+  \re@DeclareMathSymbol{\Gamma}{\mathalpha}{extra}{0}
+  \re@DeclareMathSymbol{\Delta}{\mathalpha}{extra}{1}
+  \re@DeclareMathSymbol{\Theta}{\mathalpha}{extra}{2}
+  \re@DeclareMathSymbol{\Lambda}{\mathalpha}{extra}{3}
+  \re@DeclareMathSymbol{\Xi}{\mathalpha}{extra}{4}
+  \re@DeclareMathSymbol{\Pi}{\mathalpha}{extra}{5}
+  \re@DeclareMathSymbol{\Sigma}{\mathalpha}{extra}{6}
+  \re@DeclareMathSymbol{\Upsilon}{\mathalpha}{extra}{7}
+  \re@DeclareMathSymbol{\Phi}{\mathalpha}{extra}{8}
+  \re@DeclareMathSymbol{\Psi}{\mathalpha}{extra}{9}
+  \re@DeclareMathSymbol{\Omega}{\mathalpha}{extra}{10}
+
+  \re@DeclareMathSymbol{\leftharpoonup}{\mathrel}{extra}{40}
+  \re@DeclareMathSymbol{\leftharpoondown}{\mathrel}{extra}{41}
+  \re@DeclareMathSymbol{\rightharpoonup}{\mathrel}{extra}{42}
+  \re@DeclareMathSymbol{\rightharpoondown}{\mathrel}{extra}{43}
+  \re@DeclareMathSymbol{\lhook}{\mathrel}{extra}{44}
+  \re@DeclareMathSymbol{\rhook}{\mathrel}{extra}{45}
+  \re@DeclareMathSymbol{\ldotp}{\mathpunct}{extra}{58}
+  \re@DeclareMathSymbol{\triangleright}{\mathbin}{extra}{46}
+  \re@DeclareMathSymbol{\triangleleft}{\mathbin}{extra}{47}
+  \re@DeclareMathSymbol{\star}{\mathbin}{extra}{63}
+  \re@DeclareMathSymbol{\partial}{\mathord}{extra}{64}
+  \re@DeclareMathSymbol{\flat}{\mathord}{extra}{91}
+  \re@DeclareMathSymbol{\natural}{\mathord}{extra}{92}
+  \re@DeclareMathSymbol{\sharp}{\mathord}{extra}{93}
+  \re@DeclareMathSymbol{\smile}{\mathrel}{extra}{94}
+  \re@DeclareMathSymbol{\frown}{\mathrel}{extra}{95}
+  \re@DeclareMathSymbol{\ell}{\mathord}{extra}{96}
+}
+
+% Ajuste de los "acentos" en matemáticas
+% https://tex.stackexchange.com/a/271575/117845
+\RequirePackage{stackengine,scalerel}
+\NewDocumentCommand{\TEMatAltAccent}{O{}mm} % see http://tex.stackexchange.com/a/256209/117845
+{
+  \global\expandafter\providecommand\csname #3#2\endcsname[1]{\ThisStyle{\setbox0=\hbox{$\SavedStyle##1$}%
+      \ensurestackMath{%
+        \stackon[\dimexpr-.5pt-4\LMpt#1]{\SavedStyle##1}{%
+          \SavedStyle\kern.35\ht0\csname orig#2\endcsname{}}}} %ensurestackMath
+  }%providecommand
+  \expandafter\renewcommand\csname #2\endcsname[1]{%
+    \tl_if_blank:nF { ##1 }
+    {
+      \regex_match:nnTF { \A \w \Z } { ##1 }
+      {
+        \csname #3#2\endcsname{##1}%
+      }
+      {
+        \ifcat\noexpand##1\relax% % see http://tex.stackexchange.com/a/165908/117845
+        \ifx##1\imath%
+        \csname #3#2\endcsname{##1}%
+        \else%
+        \csname orig#2\endcsname{##1} %% probably greek letter
+        \fi%
+        \else% %%% multiletter
+        \csname orig#2\endcsname{##1}
+        \fi%
+      }
+    }
+  }
+}
+
+\let\origgrave=\grave
+\TEMatAltAccent{grave}{alt}
+
+\let\origacute=\acute
+\TEMatAltAccent{acute}{alt}
+
+\let\orighat=\hat
+\TEMatAltAccent{hat}{alt}
+
+\let\origwidehat=\widehat
+\TEMatAltAccent{widehat}{alt}
+
+\let\origtilde=\tilde
+\TEMatAltAccent{tilde}{alt}
+
+\let\origbar=\bar
+\TEMatAltAccent{bar}{alt}
+
+\let\origbreve=\breve
+\TEMatAltAccent{breve}{alt}
+
+\let\origdot=\dot
+\TEMatAltAccent{dot}{alt}
+
+\let\origddot=\ddot
+\TEMatAltAccent{ddot}{alt}
+
+\let\origcheck=\check
+\TEMatAltAccent{check}{alt}
+
+\let\origvec=\vec
+\TEMatAltAccent{vec}{alt}
+
+\TEMatF_packagelater:nnTF { newtxmath }{ 2016/03/01 }{
+  \let\origdddot=\dddot
+  \TEMatAltAccent{dddot}{alt}
+  \let\origddddot=\ddddot
+  \TEMatAltAccent{ddddot}{alt}
+}{
+  \let\origdddot=\dddot
+  \TEMatAltAccent[+4\LMpt]{dddot}{alt}
+  \let\origddddot=\ddddot
+  \TEMatAltAccent[+4\LMpt]{ddddot}{alt}
+}
+
+\let\origoverrightarrow=\overrightarrow
+\TEMatAltAccent[+4\LMpt]{overrightarrow}{alt}
+
+\let\origoverleftrightarrow=\overleftrightarrow
+\TEMatAltAccent[+4\LMpt]{overleftrightarrow}{alt}
+
+\RequirePackage{mleftright}       % Correcciones de espaciado.
+\RequirePackage[makeroom]{cancel} % Opciones de cancelación en matemáticas
+\usepackage[mode=math]{siunitx}
+\sisetup{%
+  exponent-product={\ensuremath{\cdot}},
+  inter-unit-product={\,},
+  output-decimal-marker={,}
+}

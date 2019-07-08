@@ -1,0 +1,248 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.0 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{nyvt/global//global/global}
+  \entry{texample}{online}{}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{title}{\TeX ample.net}
+    \verb{url}
+    \verb http://www.texample.net/
+    \endverb
+  \endentry
+
+  \entry{bezosTE}{online}{}
+    \name{author}{1}{}{%
+      {{hash=BJ}{%
+         family={Bezos},
+         familyi={B\bibinitperiod},
+         given={Javier},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BJ1}
+    \strng{fullhash}{BJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{title}{Tipografía española con \TeX{}}
+    \verb{url}
+    \verb http://www.texnia.com/archive/tipografia.pdf
+    \endverb
+  \endentry
+
+  \entry{bezosOM}{online}{}
+    \name{author}{1}{}{%
+      {{hash=BJ}{%
+         family={Bezos},
+         familyi={B\bibinitperiod},
+         given={Javier},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BJ1}
+    \strng{fullhash}{BJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{note}{Versión 0.17}
+    \field{title}{Ortotipografía y notaciones matemáticas}
+    \verb{url}
+    \verb http://www.texnia.com/archive/ortomatem.pdf
+    \endverb
+    \field{day}{01}
+    \field{month}{09}
+    \field{year}{2016}
+  \endentry
+
+  \entry{graphics}{online}{}
+    \name{author}{1}{}{%
+      {{hash=CDP}{%
+         family={Carlisle},
+         familyi={C\bibinitperiod},
+         given={David\bibnamedelima P.},
+         giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CDP1}
+    \strng{fullhash}{CDP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{title}{Packages in the `graphics' bundle}
+    \verb{url}
+    \verb http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf
+    \endverb
+    \field{day}{23}
+    \field{month}{12}
+    \field{year}{2016}
+  \endentry
+
+  \entry{algorithmicx}{online}{}
+    \name{author}{1}{}{%
+      {{hash=JS}{%
+         family={János},
+         familyi={J\bibinitperiod},
+         given={Szász},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{JS1}
+    \strng{fullhash}{JS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{J}
+    \field{sortinithash}{J}
+    \field{note}{Versión 1.2}
+    \field{title}{The algorithmicx package}
+    \verb{url}
+    \verb http://mirrors.ctan.org/macros/latex/contrib/algorithmicx/algorithmic
+    \verb x.pdf
+    \endverb
+    \field{day}{14}
+    \field{month}{09}
+    \field{year}{2005}
+  \endentry
+
+  \entry{wiki:latex}{incollection}{}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \field{booktitle}{Wikibooks{,} The Free Textbook Project}
+    \field{title}{LaTeX}
+    \verb{url}
+    \verb https://en.wikibooks.org/w/index.php?title=LaTeX&oldid=3126115
+    \endverb
+    \field{year}{2016}
+    \field{urlday}{30}
+    \field{urlmonth}{11}
+    \field{urlyear}{2016}
+  \endentry
+
+  \entry{biblatex}{online}{}
+    \name{author}{4}{}{%
+      {{hash=LP}{%
+         family={Lehman},
+         familyi={L\bibinitperiod},
+         given={Philipp},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=KP}{%
+         family={Kime},
+         familyi={K\bibinitperiod},
+         given={Philip},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=BA}{%
+         family={Boruvka},
+         familyi={B\bibinitperiod},
+         given={Audrey},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=WJ}{%
+         family={Wright},
+         familyi={W\bibinitperiod},
+         given={Joseph},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{LP+1}
+    \strng{fullhash}{LPKPBAWJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \field{note}{Versión 3.5}
+    \field{subtitle}{Programmable Bibliographies and Citations}
+    \field{title}{The biblatex Package}
+    \verb{url}
+    \verb http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pd
+    \verb f
+    \endverb
+    \field{day}{14}
+    \field{month}{09}
+    \field{year}{2016}
+  \endentry
+
+  \entry{standalone}{online}{}
+    \name{author}{1}{}{%
+      {{hash=SM}{%
+         family={Scharrer},
+         familyi={S\bibinitperiod},
+         given={Martin},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SM1}
+    \strng{fullhash}{SM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{note}{Versión 1.2}
+    \field{title}{The standalone Package}
+    \verb{url}
+    \verb http://mirrors.ctan.org/macros/latex/contrib/standalone/standalone.pd
+    \verb f
+    \endverb
+    \field{day}{15}
+    \field{month}{07}
+    \field{year}{2015}
+  \endentry
+
+  \entry{stackexchange}{online}{}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{title}{TeX - LaTeX Stack Exchange}
+    \verb{url}
+    \verb http://tex.stackexchange.com/
+    \endverb
+  \endentry
+
+  \entry{siunitx}{online}{}
+    \name{author}{1}{}{%
+      {{hash=WJ}{%
+         family={Wright},
+         familyi={W\bibinitperiod},
+         given={Joseph},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{WJ1}
+    \strng{fullhash}{WJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{W}
+    \field{sortinithash}{W}
+    \field{note}{Versión 2.6s}
+    \field{subtitle}{A comprehensive (SI) units packge}
+    \field{title}{siunitx}
+    \verb{url}
+    \verb http://mirrors.ctan.org/macros/latex/contrib/siunitx/siunitx.pdf
+    \endverb
+    \field{day}{02}
+    \field{month}{09}
+    \field{year}{2016}
+  \endentry
+\enddatalist
+\endinput
