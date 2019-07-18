@@ -22,6 +22,8 @@
 %% de `PlantillaTEMat.tex'.
 %%%%%%%%%%%%% Fin para usuarios de PSTricks y TikZ
 
+\providecommand{\gene}[1]{\langle{#1}\rangle}
+
 
 %% Fin del espacio para cargar paquetes.
 % Ahora ya empieza el documento en sí.
@@ -49,183 +51,191 @@
 \begin{document}
 % El resumen debe ser lo último en aparecer antes de empezar con el contenido del artículo.
 \begin{abstract}
-Este archivo sirve como plantilla para artículos que se quieran presentar a la revista TEMat de la ANEM.
-Presentamos de manera simple cómo se debe usar el formato de la revista, así como las instrucciones habituales y todo lo relacionado con la redacción de artículos en \LaTeX.
-Se puede utilizar la propia plantilla como base para trabajar.
-También discutimos los paquetes necesarios, de los cuales la mayoría se cargan automáticamente, y algunos paquetes prohibidos.
-Se dan varios ejemplos de uso de la mayor parte de los elementos presentados.
-
-Para asegurar un estilo uniforme en todos los artículos de la revista, el uso de la plantilla es obligatorio, y está totalmente prohibido cambiar los ajustes de espaciado y estructura.
+El problema de la palabra es uno de los problemas más importantes en teoría combinatoria de grupos. En este artículo presentamos una familia de grupos, los grupos de trenzas, donde es posible resolverlo, junto con uno de los algoritmos más eficientes que existen para ello. 
 \end{abstract}
 \begin{abstract}[english]
-This file serves as a template for articles that are planned to be presented to ANEM's TEMat journal.
-We present how to use the journal's format in a simple way, as well as the usual instructions and everything related to writing articles using \LaTeX.
-You might use this template as a basis for your work.
-We also discuss about the packages that are needed, considering that most of them are automatically loaded, and some forbidden packages.
-We show many use-case examples for most of the presented elements.
-
-To ensure a uniform style in all articles in the journal, using the template is compulsory and it is completely forbidden to change the spacing and structure settings.
+The word problem is one of the most important problems in combinatorial group theory. In this paper we present a family of groups, the braid groups, in which it is possible to solve it, together with one of the most efficient algorithms for that purpose.
 \end{abstract}
 \maketitle
 
 \section{Introducción}
+COGER LA BIBLIOGRAFÍA DE MI TFM
 
-Esta es la plantilla de artículos para la revista TEMat.
-En ella recogemos todas las instrucciones básicas sobre cómo crear artículos en \LaTeX{} de acuerdo a los criterios editoriales de TEMat.
-Hay varios documentos que forman parte de la plantilla.
-Los más importantes son el documento \verb+TEMat-article.cls+, que forma una clase que incluye todo el formato de la revista y \textbf{NO} se debe modificar; el documento \verb+PlantillaTEMat.tex+, que sirve para crear artículos, y el documento \verb+plantilla.bib+, que sirve para crear bibliografías que después se importan al artículo.
-Además, están los archivos \verb+latexmkrc+ (necesario para los que utilicen \verb+latexmk+), y \verb+triangulo.tex+ y \verb+triangulo-ps.tex+ (que proporcionan ejemplos de figuras en \verb+tikz+ y en \verb+pstrics+), así como los diagramas \verb+triangulo-precompilado.pdf+ y \verb+triangulo-ps-precompilado.pdf+ como muestra para la inclusión de figuras.
-Finalmente, el documento \verb+PlantillaTEMat.pdf+ permite ver el resultado después de compilar.
-Si no puedes compilar la plantilla, eso quiere decir que faltan paquetes en tu ordenador, y se deben instalar.
-Si el resultado de la compilación es distinto del ofrecido en el pdf, también hay algún problema.
-Se puede compilar con \verb+pdflatex+, \verb+lualatex+ o \verb+xelatex+ (preferimos uno de los dos primeros, y en principio nosotros compilaremos con el segundo).
-No damos soporte a compilaciones que no sean en modo pdf (\verb|latex+dvips+ps2pdf| u otras).
+El problema de la palabra es uno de los problemas fundamentales de la teoría combinatoria de grupos propuestos por Max Dehn \cite{Dehn11}. Este problema consiste en: dado un grupo $G$ con una presentación finita $\langle S| R\rangle$ y dados dos elementos $a$ y $b$ de $G$ expresados como producto de los elementos de $S$ y sus inversos, decidir si $a=b$ como elementos del grupo o, equivalentemente, si $ab^{-1}=1$.
 
-Esta plantilla (especialmente el documento \verb+TEMat-article.cls+) podría ser revisada y modificada a lo largo del tiempo.
-Recomendamos a los autores que descarguen la versión más reciente de la clase para trabajar.
-En caso de encontrar un error o tener algún problema, contactad con los editores de TEMat a través del correo \email{publicaciones@anemat.com}.
+El nombre de este problema proviene de que podemos considerar el alfabeto $\Sigma=S\cup S^{-1}$, donde $S^{-1}$ representa el conjunto formado por los inversos de los elementos de $S$, y ver $G$ como un lenguaje sobre $\Sigma$, en el que dos palabras $a$ y $b$ representarán el mismo elemento si y solo si se puede transformar $a$ en $b$ mediante un número finito de pasos usando las reglas de reescritura proporcionadas por las relaciones de $R$ junto con la cancelación de inversos.  
 
-\section{Portada del artículo}
+El propio Dehn describió algoritmos para resolver el problema de la palabra en grupos fundamentales de 2-variedades orientables cerradas con género mayor o igual que 2 \cite{Dehn12}. Sin embargo, en 1955 Pyotr Novikov encontró ejemplos de grupos finitamente presentados donde el problema de la palabra era indecidible \cite{Novikov}, es decir, que no se puede diseñar un algoritmo que lo resuelva. A pesar de esto, hay gran cantidad de grupos donde el problema de la palabra sí es resoluble. Ejemplos claros de ello son los grupos finitos y los grupos libres. Aquí estudiaremos los grupos de trenzas, que aparecen en numerosas ramas de las matemáticas como el álgebra, la topología y el análisis, y en los cuales el problema de la palabra es resoluble.
 
-Cada artículo tendrá su propia portada (para que se puedan descargar por separado y quede recogida toda la información del artículo en dicha portada), parecida a la de esta plantilla.
-En esta página deberá aparecer toda la información del autor o los autores y del artículo en cuestión.
-Nótese que toda la información se puede introducir antes o después del \verb+\begin{document}+, salvo los resúmenes que deben ir siempre después.
-La portada se genera después de los resúmenes mediante el uso del comando \verb+\maketitle+.
+PONER ALGO DE LA ESTRUCTURA
+%Esta es la plantilla de artículos para la revista TEMat.
+%En ella recogemos todas las instrucciones básicas sobre cómo crear artículos en \LaTeX{} de acuerdo a los criterios editoriales de TEMat.
+%Hay varios documentos que forman parte de la plantilla.
+%Los más importantes son el documento \verb+TEMat-article.cls+, que forma una clase que incluye todo el formato de la revista y \textbf{NO} se debe modificar; el documento \verb+PlantillaTEMat.tex+, que sirve para crear artículos, y el documento \verb+plantilla.bib+, que sirve para crear bibliografías que después se importan al artículo.
+%Además, están los archivos \verb+latexmkrc+ (necesario para los que utilicen \verb+latexmk+), y \verb+triangulo.tex+ y \verb+triangulo-ps.tex+ (que proporcionan ejemplos de figuras en \verb+tikz+ y en \verb+pstrics+), así como los diagramas \verb+triangulo-precompilado.pdf+ y \verb+triangulo-ps-precompilado.pdf+ como muestra para la inclusión de figuras.
+%Finalmente, el documento \verb+PlantillaTEMat.pdf+ permite ver el resultado después de compilar.
+%Si no puedes compilar la plantilla, eso quiere decir que faltan paquetes en tu ordenador, y se deben instalar.
+%Si el resultado de la compilación es distinto del ofrecido en el pdf, también hay algún problema.
+%Se puede compilar con \verb+pdflatex+, \verb+lualatex+ o \verb+xelatex+ (preferimos uno de los dos primeros, y en principio nosotros compilaremos con el segundo).
+%No damos soporte a compilaciones que no sean en modo pdf (\verb|latex+dvips+ps2pdf| u otras).
+%
+%Esta plantilla (especialmente el documento \verb+TEMat-article.cls+) podría ser revisada y modificada a lo largo del tiempo.
+%Recomendamos a los autores que descarguen la versión más reciente de la clase para trabajar.
+%En caso de encontrar un error o tener algún problema, contactad con los editores de TEMat a través del correo \email{publicaciones@anemat.com}.
 
-Se debe poner el título del artículo con el comando \verb+\title{}+.
-Si se trata de un título largo (tanto que no cabe en la cabecera de las páginas de la revista), se deberá proporcionar también un título corto.
-Para ello, se deben rellenar los dos campos como sigue: \verb+\title[Título corto, opcional]{Título del artículo}+.
-Se puede ver un ejemplo de esto y de todo lo posterior en el archivo \verb+PlantillaTEMat.tex+ de esta plantilla.
+\section{Presentaciones de grupos}
 
-Es necesario incluir el nombre y los apellidos para cada autor, así como su afiliación (en qué universidad (u otro lugar) estudia o trabaja).
-También existe la posibilidad de incluir un correo electrónico, por si alguien quiere contactar al autor para preguntar más sobre el tema, pero poner esto es opcional.
-Para introducir estos datos, se deben utilizar los siguientes comandos:
-\begin{itemize}
-\item \verb+\author{Apellido o Apellidos, Nombre}+ para el nombre (este comando debe ser el primero en aparecer para cada autor);
-\item \verb+\affiliation{Afiliación}+ para indicar la afiliación académica o lugar de trabajo;
-\item \verb+\email{email}+, de forma opcional, para indicar una dirección de correo electrónico de contacto, y
-\item \verb+\authornote{Nota al pie}+, de forma opcional, para añadir una breve nota al pie sobre esa persona.
-\end{itemize}
-En el mundo de las matemáticas, la práctica más habitual es poner a los autores por orden alfabético de apellido, sin darle más énfasis a uno que a los otros, y nosotros aconsejamos esta práctica; sin embargo, mantendremos el orden en que estén en el envío.
+Con la intención de que este texto sea lo más accesible posible, dedicaremos esta sección a explicar qué son las presentaciones de grupos. El lector familiarizado con este concepto puede pasar directamente a la siguiente sección. 
 
-Cuando solamente hay un autor, debe usarse el comando \verb+\author*+ (con asterisco) para indicar su nombre. Si hay más de uno, la persona de contacto deberá usar el comando con asterisco y el resto deberán usarlo sin asterisco.
+SACARLO DE YAGO
 
-Deberá haber una lista con las palabras clave del artículo, que se debe definir con \verb+\keywords{}+, separándolas por comas (y sin añadir punto final).
-También se debe incluir la clasificación del tema del artículo según la MSC2010 (2010 Mathematics Subject Classification) usando \verb+\msc{}+.
-Para los que no conozcan esto, se debe buscar en la página \url{http://www.ams.org/msc/msc2010.html} el código (o códigos) que mejor se correspondan con la temática del artículo que se presenta.
-De ser posible, se debe poner uno solo; en caso de haber varios temas relacionados, recomendamos que no se pongan más de cinco códigos.
+%Cada artículo tendrá su propia portada (para que se puedan descargar por separado y quede recogida toda la información del artículo en dicha portada), parecida a la de esta plantilla.
+%En esta página deberá aparecer toda la información del autor o los autores y del artículo en cuestión.
+%Nótese que toda la información se puede introducir antes o después del \verb+\begin{document}+, salvo los resúmenes que deben ir siempre después.
+%La portada se genera después de los resúmenes mediante el uso del comando \verb+\maketitle+.
+%
+%Se debe poner el título del artículo con el comando \verb+\title{}+.
+%Si se trata de un título largo (tanto que no cabe en la cabecera de las páginas de la revista), se deberá proporcionar también un título corto.
+%Para ello, se deben rellenar los dos campos como sigue: \verb+\title[Título corto, opcional]{Título del artículo}+.
+%Se puede ver un ejemplo de esto y de todo lo posterior en el archivo \verb+PlantillaTEMat.tex+ de esta plantilla.
+%
+%Es necesario incluir el nombre y los apellidos para cada autor, así como su afiliación (en qué universidad (u otro lugar) estudia o trabaja).
+%También existe la posibilidad de incluir un correo electrónico, por si alguien quiere contactar al autor para preguntar más sobre el tema, pero poner esto es opcional.
+%Para introducir estos datos, se deben utilizar los siguientes comandos:
+%\begin{itemize}
+%\item \verb+\author{Apellido o Apellidos, Nombre}+ para el nombre (este comando debe ser el primero en aparecer para cada autor);
+%\item \verb+\affiliation{Afiliación}+ para indicar la afiliación académica o lugar de trabajo;
+%\item \verb+\email{email}+, de forma opcional, para indicar una dirección de correo electrónico de contacto, y
+%\item \verb+\authornote{Nota al pie}+, de forma opcional, para añadir una breve nota al pie sobre esa persona.
+%\end{itemize}
+%En el mundo de las matemáticas, la práctica más habitual es poner a los autores por orden alfabético de apellido, sin darle más énfasis a uno que a los otros, y nosotros aconsejamos esta práctica; sin embargo, mantendremos el orden en que estén en el envío.
+%
+%Cuando solamente hay un autor, debe usarse el comando \verb+\author*+ (con asterisco) para indicar su nombre. Si hay más de uno, la persona de contacto deberá usar el comando con asterisco y el resto deberán usarlo sin asterisco.
+%
+%Deberá haber una lista con las palabras clave del artículo, que se debe definir con \verb+\keywords{}+, separándolas por comas (y sin añadir punto final).
+%También se debe incluir la clasificación del tema del artículo según la MSC2010 (2010 Mathematics Subject Classification) usando \verb+\msc{}+.
+%Para los que no conozcan esto, se debe buscar en la página \url{http://www.ams.org/msc/msc2010.html} el código (o códigos) que mejor se correspondan con la temática del artículo que se presenta.
+%De ser posible, se debe poner uno solo; en caso de haber varios temas relacionados, recomendamos que no se pongan más de cinco códigos.
+%
+%Debajo de esta información aparecen la fecha de recepción y de aceptación del artículo presentado.
+%Las que hay en la plantilla están a modo de ejemplo; estos campos los rellenarán los editores de la revista para cada artículo.
+%En la versión final de los artículos, aparece también la información bibliográfica del trabajo.
+%
+%En la misma página aparecerán los agradecimientos (en caso de haberlos), así como las fuentes de financiación (en caso de haberlas).
+%Para introducirlas, se utiliza \verb+\acknowledgements{}+.
+%
+%Finalmente, se debe proporcionar un resumen (o \textit{abstract}) del artículo que se envía. Este resumen debe redactarse tanto en castellano como en inglés.
+%Para ello, se define un entorno de resumen delimitado por \verb+\begin{abstract}+ y \verb+\end{abstract}+ para el idioma principal (castellano por defecto) y \verb+\begin{abstract}[english]+ \verb+\end{abstract}+ para inglés.
+%El resumen debe aportar información suficiente como para saber de qué trata el artículo y cuáles son las aportaciones principales, pero debe ser lo suficientemente corto como para que no se salga de la portada ninguno de los campos que deben estar en ella.
+%
+%Una vez se han indicado todos los campos de la portada, debe añadirse el comando \verb+\maketitle+, que aparecerá después de todos ellos y justo antes de empezar con el contenido del artículo.
+%
+%Para anonimizar el documento para la revisión, basta con cargar la clase \verb+revistaanem+ con la opción \verb+anonimo+ (aunque también \verb+anon+, \verb+anonymous+, \verb+revision+ o \verb+review+).
+%Sería así, \verb+\documentclass[anon]{TEMat-article}+
+%
+%Insistimos: hay ejemplos de todo en \verb+PlantillaTEMat.tex+.
+%
 
-Debajo de esta información aparecen la fecha de recepción y de aceptación del artículo presentado.
-Las que hay en la plantilla están a modo de ejemplo; estos campos los rellenarán los editores de la revista para cada artículo.
-En la versión final de los artículos, aparece también la información bibliográfica del trabajo.
 
-En la misma página aparecerán los agradecimientos (en caso de haberlos), así como las fuentes de financiación (en caso de haberlas).
-Para introducirlas, se utiliza \verb+\acknowledgements{}+.
+\section{Grupos de trenzas}
 
-Finalmente, se debe proporcionar un resumen (o \textit{abstract}) del artículo que se envía. Este resumen debe redactarse tanto en castellano como en inglés.
-Para ello, se define un entorno de resumen delimitado por \verb+\begin{abstract}+ y \verb+\end{abstract}+ para el idioma principal (castellano por defecto) y \verb+\begin{abstract}[english]+ \verb+\end{abstract}+ para inglés.
-El resumen debe aportar información suficiente como para saber de qué trata el artículo y cuáles son las aportaciones principales, pero debe ser lo suficientemente corto como para que no se salga de la portada ninguno de los campos que deben estar en ella.
+%Todo artículo debe seguir una estructura que convierta su lectura en algo agradable y permita seguir los argumentos con mayor facilidad.
+%Habitualmente, esta estructura se ve reforzada utilizando secciones y subsecciones.
+%Para crear una sección basta con usar el comando \verb+\section{nombre}+.
+%Para crear subsecciones, se debe usar \verb+\subsection{nombre}+.
+%Existe la posibilidad de llegar hasta las subsubsecciones, pero recomendamos encarecidamente que no se haga esto.
 
-Una vez se han indicado todos los campos de la portada, debe añadirse el comando \verb+\maketitle+, que aparecerá después de todos ellos y justo antes de empezar con el contenido del artículo.
-
-Para anonimizar el documento para la revisión, basta con cargar la clase \verb+revistaanem+ con la opción \verb+anonimo+ (aunque también \verb+anon+, \verb+anonymous+, \verb+revision+ o \verb+review+).
-Sería así, \verb+\documentclass[anon]{TEMat-article}+
-
-Insistimos: hay ejemplos de todo en \verb+PlantillaTEMat.tex+.
+\subsection{Definición geométrica}
 
 
 
-\section{Creando secciones...}
+\subsection{Presentación del grupo}
 
-Todo artículo debe seguir una estructura que convierta su lectura en algo agradable y permita seguir los argumentos con mayor facilidad.
-Habitualmente, esta estructura se ve reforzada utilizando secciones y subsecciones.
-Para crear una sección basta con usar el comando \verb+\section{nombre}+.
-Para crear subsecciones, se debe usar \verb+\subsection{nombre}+.
-Existe la posibilidad de llegar hasta las subsubsecciones, pero recomendamos encarecidamente que no se haga esto.
 
-\subsection{...y subsecciones...}
 
-Obviamente, en cada sección se puede introducir tanto texto como queráis.
+\section{Algoritmo de Garside}
 
-\subsection{...y más subsecciones}
+\subsection{Formas normales}
 
-\section{Matemáticas}
+\subsection{Solución al problema de la palabra}
 
-La principal herramienta para un matemático al usar \LaTeX{} son las fórmulas matemáticas.
-Todas las fórmulas aparecerán automáticamente en letra itálica, distinguiendo así el entorno de matemáticas del texto normal.
-Para añadir fórmulas, basta con usar \verb+\(+ y \verb+\)+, y escribir la fórmula matemática entre estos delimitadores.
-En su defecto, se pueden usar también \verb+$+ y \verb+$+.
-Así, se pueden escribir pequeñas fórmulas en entorno matemático, como \(x^3+y^3=z^3\) o $\nume^{\iunit\pi}=-1$.
-Si se quiere poner fórmulas centradas y separadas del resto del párrafo, se deben emplear los delimitadores \verb+\[+ y \verb+\]+ (\textbf{no} puedes usar \verb+$$+ y \verb+$$+, puede estropear el formato de la revista\footnote{En realidad, no quieres usar los dobles dólares en ningún documento. ¿El motivo? A diferencia de otros entornos, no tienen bien ajustado el espaciado.}), para conseguir formas del estilo de
-\[\sum_{i=1}^n\frac{1}{i}\approx\log n.\]
-Sí, las fórmulas son parte del texto, de modo que van seguidas de los signos de puntuación correspondientes.
-Si además se quiere que la fórmula quede numerada, se puede usar \verb+\begin{equation}+ y \verb+\end{equation}+, de modo que resulte
-\begin{equation}\label{equa:ejemplo1}
-\int_{1}^x\frac{1}{t} \diff t = \log x.
-\end{equation}
-Existen otras muchas formas más complejas de introducir ecuaciones, con entornos como \verb+align+ y otros muchos.
-Recomendamos buscar información sobre estos entornos por internet.
-También se debe buscar información sobre cómo introducir caracteres especiales y diferentes símbolos matemáticos.
-Por ejemplo, para referirnos a los números naturales, enteros, etc. ($\mathbb{N}$, $\mathbb{Z}$, $\mathbb{Q}$...) se utiliza el comando \verb+\mathbb{}+.
-Se puede encontrar información sobre estos símbolos en páginas como \url{https://www.artofproblemsolving.com/wiki/index.php/LaTeX:Symbols} o \url{http://detexify.kirelabs.org/classify.html} (que permite dibujar el símbolo que buscas).
-
-A menudo es frecuente querer referirse a una ecuación que se ha escrito antes (para eso se utiliza la numeración de las fórmulas).
-Así, para referirnos a la fórmula \eqref{equa:ejemplo1}, tenemos que escribir el comando \verb+\eqref{formula}+, donde el nombre de la fórmula se asigna con un \verb+\label+, como podéis comprobar en la ecuación anterior en el archivo \verb+PlantillaTEMat.tex+.
-Alternativamente, se puede utilizar \verb+\cref{nombre}+.
-
-\subsection{Entornos matemáticos}
-
-Además del entorno básico para escribir matemáticas, los matemáticos siempre escriben teoremas, corolarios, demostraciones..., y para cada uno de los tipos de enunciado hay un entorno propio.
-\textbf{Se deben usar estos entornos para mantener el estilo de la revista}.
-Para usar cada uno de ellos se debe empezar con un \verb+\begin{nombreentorno}+ y terminar con un \verb+\end{nombreentorno}+.
-Por ejemplo, podemos escribir teoremas como los que siguen.
-
-\begin{teorema}[del punto gordo]\label{teor:ejemplo1}
-Dadas tres \emph{rectas} $r$,\/ $s$ y\/ $t$ en\/ $\mathbb{R}^2$, existe un punto tal que las tres rectas se intersecan en él (vaya, que se cortan).
-\end{teorema}
-
-\begin{demostracion}
-Basta con tomar un punto suficientemente gordo.
-\end{demostracion}
-
-\begin{teorema}\label{teor:ejemplo2}
-Contrario a la creencia común,
-\[\frac{0}{0}=2.\]
-\end{teorema}
-
-\begin{demostracion}[Demostración por simplificación de ceros]
-Lo demostramos con la siguiente cadena de igualdades:
-\[\frac{0}{0}=\frac{100-100}{100-100}=\frac{(10+10)(10-10)}{10\,(10-10)}=\frac{20}{10}=2.\qedhere\]
-\end{demostracion}
-
-\begin{nota*}
-En general, vamos a intentar que teoremas de este estilo que mandéis no se publiquen. Os vigilamos.
-\end{nota*}
-
-Para añadir información al encabezado del teorema (como un nombre, autor, año...) se debe incluir entre corchetes (\verb+[]+) después del \verb+\begin{teorema}+, como en el \autoref{teor:ejemplo1}.
-Además, hay un detalle importante en cuanto a las demostraciones.
-El cuadradito negro aparecerá automáticamente al final de la demostración, pero no estará bien colocado si la demostración acaba con una fórmula.
-En ese caso, se debe incluir la instrucción \verb+\qedhere+ al final de la última fórmula, como sucede en la demostración del \autoref{teor:ejemplo2}.
-
-Los entornos que hemos habilitado son teorema, proposición, corolario, lema, propiedad, conjetura, hecho, criterio, axioma, definición, ejemplo, ejercicio, problema, pregunta, hipótesis, observación, convención, nota, notación, afirmación, caso, algoritmo, solución y, por supuesto, demostración.
-Para crear cualquiera de ellos, pon su nombre (sin tilde) en \verb+nombreentorno+, o sus nombres habituales en inglés, o alguna de las abreviaciones más habituales (no garantizamos que tu abreviación favorita vaya a funcionar; si no funciona, escribe el nombre completo).
-No, no hay más entornos.
-Si crees que alguno más es absolutamente necesario, ponte en contacto con nosotros.
-
-En general, cada vez que se empiece a trabajar en un entorno, este aparecerá numerado.
-Si el autor quiere que no sea así, basta con añadir un asterisco (\verb+*+) después de \verb+nombreentorno+ (por ejemplo, \verb+teorema*+).
-
-También es muy frecuente querer referirnos a resultados que ya hemos escrito, como el \autoref{teor:ejemplo1}. Para hacerlo, basta con usar \verb+\autoref{nombreteorema}+ o \verb+\cref{nombreteorema}+, donde al teorema se le ha dado un nombre usando \verb+\label+ (de nuevo, puedes comprobar cómo en el archivo \verb+PlantillaTEMat.tex+).
-Haciendo esto, si tienes el documento en pdf, puedes pinchar en \autoref{teor:ejemplo2} para que te muestre directamente el resultado al que se refiere, cosa muy útil a la hora de leer artículos.
-
-\subsection{Sistema Internacional}
-
-Para escribir números grandes o magnitudes físicas, hemos cargado el paquete \verb+siunitx+.
-Si queréis saber cómo se usa, solamente tenéis que echarle un vistazo a la documentación~\cite{siunitx}.
-Brevemente, para escribir un número como \num{10000}, usa \verb+\num{10000}+ (y así se verá el espacio recomendado cuando hay más de cuatro cifras).
-Esperamos que el \SI{100}{\percent} de los autores que usen unidades en sus artículos aprovechen su uso.
-Especialmente porque, como dice \citet{bezosOM}, las unidades se escriben en letra redonda y con un espacio entre el número y la unidad.
-Por ejemplo, para escribir \SI{9.8}{m.s^{-2}} se puede usar \verb+\SI{9.8}{m.s^{-2}}+ o bien \verb+\SI{9.8}{\metre\per\square\second}+.
+\begin{ejemplo}
+	\end{ejemplo}
+%La principal herramienta para un matemático al usar \LaTeX{} son las fórmulas matemáticas.
+%Todas las fórmulas aparecerán automáticamente en letra itálica, distinguiendo así el entorno de matemáticas del texto normal.
+%Para añadir fórmulas, basta con usar \verb+\(+ y \verb+\)+, y escribir la fórmula matemática entre estos delimitadores.
+%En su defecto, se pueden usar también \verb+$+ y \verb+$+.
+%Así, se pueden escribir pequeñas fórmulas en entorno matemático, como \(x^3+y^3=z^3\) o $\nume^{\iunit\pi}=-1$.
+%Si se quiere poner fórmulas centradas y separadas del resto del párrafo, se deben emplear los delimitadores \verb+\[+ y \verb+\]+ (\textbf{no} puedes usar \verb+$$+ y \verb+$$+, puede estropear el formato de la revista\footnote{En realidad, no quieres usar los dobles dólares en ningún documento. ¿El motivo? A diferencia de otros entornos, no tienen bien ajustado el espaciado.}), para conseguir formas del estilo de
+%\[\sum_{i=1}^n\frac{1}{i}\approx\log n.\]
+%Sí, las fórmulas son parte del texto, de modo que van seguidas de los signos de puntuación correspondientes.
+%Si además se quiere que la fórmula quede numerada, se puede usar \verb+\begin{equation}+ y \verb+\end{equation}+, de modo que resulte
+%\begin{equation}\label{equa:ejemplo1}
+%\int_{1}^x\frac{1}{t} \diff t = \log x.
+%\end{equation}
+%Existen otras muchas formas más complejas de introducir ecuaciones, con entornos como \verb+align+ y otros muchos.
+%Recomendamos buscar información sobre estos entornos por internet.
+%También se debe buscar información sobre cómo introducir caracteres especiales y diferentes símbolos matemáticos.
+%Por ejemplo, para referirnos a los números naturales, enteros, etc. ($\mathbb{N}$, $\mathbb{Z}$, $\mathbb{Q}$...) se utiliza el comando \verb+\mathbb{}+.
+%Se puede encontrar información sobre estos símbolos en páginas como \url{https://www.artofproblemsolving.com/wiki/index.php/LaTeX:Symbols} o \url{http://detexify.kirelabs.org/classify.html} (que permite dibujar el símbolo que buscas).
+%
+%A menudo es frecuente querer referirse a una ecuación que se ha escrito antes (para eso se utiliza la numeración de las fórmulas).
+%Así, para referirnos a la fórmula \eqref{equa:ejemplo1}, tenemos que escribir el comando \verb+\eqref{formula}+, donde el nombre de la fórmula se asigna con un \verb+\label+, como podéis comprobar en la ecuación anterior en el archivo \verb+PlantillaTEMat.tex+.
+%Alternativamente, se puede utilizar \verb+\cref{nombre}+.
+%
+%\subsection{Entornos matemáticos}
+%
+%Además del entorno básico para escribir matemáticas, los matemáticos siempre escriben teoremas, corolarios, demostraciones..., y para cada uno de los tipos de enunciado hay un entorno propio.
+%\textbf{Se deben usar estos entornos para mantener el estilo de la revista}.
+%Para usar cada uno de ellos se debe empezar con un \verb+\begin{nombreentorno}+ y terminar con un \verb+\end{nombreentorno}+.
+%Por ejemplo, podemos escribir teoremas como los que siguen.
+%
+%\begin{teorema}[del punto gordo]\label{teor:ejemplo1}
+%Dadas tres \emph{rectas} $r$,\/ $s$ y\/ $t$ en\/ $\mathbb{R}^2$, existe un punto tal que las tres rectas se intersecan en él (vaya, que se cortan).
+%\end{teorema}
+%
+%\begin{demostracion}
+%Basta con tomar un punto suficientemente gordo.
+%\end{demostracion}
+%
+%\begin{teorema}\label{teor:ejemplo2}
+%Contrario a la creencia común,
+%\[\frac{0}{0}=2.\]
+%\end{teorema}
+%
+%\begin{demostracion}[Demostración por simplificación de ceros]
+%Lo demostramos con la siguiente cadena de igualdades:
+%\[\frac{0}{0}=\frac{100-100}{100-100}=\frac{(10+10)(10-10)}{10\,(10-10)}=\frac{20}{10}=2.\qedhere\]
+%\end{demostracion}
+%
+%\begin{nota*}
+%En general, vamos a intentar que teoremas de este estilo que mandéis no se publiquen. Os vigilamos.
+%\end{nota*}
+%
+%Para añadir información al encabezado del teorema (como un nombre, autor, año...) se debe incluir entre corchetes (\verb+[]+) después del \verb+\begin{teorema}+, como en el \autoref{teor:ejemplo1}.
+%Además, hay un detalle importante en cuanto a las demostraciones.
+%El cuadradito negro aparecerá automáticamente al final de la demostración, pero no estará bien colocado si la demostración acaba con una fórmula.
+%En ese caso, se debe incluir la instrucción \verb+\qedhere+ al final de la última fórmula, como sucede en la demostración del \autoref{teor:ejemplo2}.
+%
+%Los entornos que hemos habilitado son teorema, proposición, corolario, lema, propiedad, conjetura, hecho, criterio, axioma, definición, ejemplo, ejercicio, problema, pregunta, hipótesis, observación, convención, nota, notación, afirmación, caso, algoritmo, solución y, por supuesto, demostración.
+%Para crear cualquiera de ellos, pon su nombre (sin tilde) en \verb+nombreentorno+, o sus nombres habituales en inglés, o alguna de las abreviaciones más habituales (no garantizamos que tu abreviación favorita vaya a funcionar; si no funciona, escribe el nombre completo).
+%No, no hay más entornos.
+%Si crees que alguno más es absolutamente necesario, ponte en contacto con nosotros.
+%
+%En general, cada vez que se empiece a trabajar en un entorno, este aparecerá numerado.
+%Si el autor quiere que no sea así, basta con añadir un asterisco (\verb+*+) después de \verb+nombreentorno+ (por ejemplo, \verb+teorema*+).
+%
+%También es muy frecuente querer referirnos a resultados que ya hemos escrito, como el \autoref{teor:ejemplo1}. Para hacerlo, basta con usar \verb+\autoref{nombreteorema}+ o \verb+\cref{nombreteorema}+, donde al teorema se le ha dado un nombre usando \verb+\label+ (de nuevo, puedes comprobar cómo en el archivo \verb+PlantillaTEMat.tex+).
+%Haciendo esto, si tienes el documento en pdf, puedes pinchar en \autoref{teor:ejemplo2} para que te muestre directamente el resultado al que se refiere, cosa muy útil a la hora de leer artículos.
+%
+%\subsection{Sistema Internacional}
+%
+%Para escribir números grandes o magnitudes físicas, hemos cargado el paquete \verb+siunitx+.
+%Si queréis saber cómo se usa, solamente tenéis que echarle un vistazo a la documentación~\cite{siunitx}.
+%Brevemente, para escribir un número como \num{10000}, usa \verb+\num{10000}+ (y así se verá el espacio recomendado cuando hay más de cuatro cifras).
+%Esperamos que el \SI{100}{\percent} de los autores que usen unidades en sus artículos aprovechen su uso.
+%Especialmente porque, como dice \citet{bezosOM}, las unidades se escriben en letra redonda y con un espacio entre el número y la unidad.
+%Por ejemplo, para escribir \SI{9.8}{m.s^{-2}} se puede usar \verb+\SI{9.8}{m.s^{-2}}+ o bien \verb+\SI{9.8}{\metre\per\square\second}+.
 
 \section{Paquetes}
 
