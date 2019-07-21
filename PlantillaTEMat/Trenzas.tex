@@ -22,6 +22,7 @@
 \usepackage{braids}
 
 \usetikzlibrary{decorations.shapes}
+\usetikzlibrary{arrows}
 
 %%%%%%%%%%%%% PARA USUARIOS DE PSTRICKS Y TIKZ %%%%%%%%%%%%%%%%%
 %% Os recomendamos que uséis TikZ, mejor que PSTricks.
@@ -59,7 +60,7 @@
 \keywords{trenzas, grupo, problema de la palabra, algoritmo}
 \acknowledgements{Quiero agradecer a mis directores de TFG, Juan González-Menses y Ramón Flores Díaz, por el apoyo y conocimiento aportado que me permitieron desarrollar el trabajo y extraer de él este artículo.}
 
-\addbibresource{plantilla.bib}
+\addbibresource{bibtrenzas.bib}
 
 \begin{document}
 % El resumen debe ser lo último en aparecer antes de empezar con el contenido del artículo.
@@ -72,7 +73,7 @@ The word problem is one of the most important problems in combinatorial group th
 \maketitle
 
 \section{Introducción}
-COGER LA BIBLIOGRAFÍA DE MI TFM
+COGER LA BIBLIOGRAFÍA DE MI TFG
 
 El problema de la palabra es uno de los problemas fundamentales de la teoría combinatoria de grupos propuestos por Max Dehn \cite{Dehn11}. Este problema consiste en: dado un grupo $G$ con una presentación finita $\langle S| R\rangle$ y dados dos elementos $a$ y $b$ de $G$ expresados como producto de los elementos de $S$ y sus inversos, decidir si $a=b$ como elementos del grupo o, equivalentemente, si $ab^{-1}=1$.
 
@@ -96,13 +97,12 @@ PONER ALGO DE LA ESTRUCTURA
 %Recomendamos a los autores que descarguen la versión más reciente de la clase para trabajar.
 %En caso de encontrar un error o tener algún problema, contactad con los editores de TEMat a través del correo \email{publicaciones@anemat.com}.
 
-\section{Presentaciones de grupos}
+\section{Preliminares}
 
-Con la intención de que este texto sea lo más accesible posible, dedicaremos esta sección a explicar qué son las presentaciones de grupos. El lector familiarizado con este concepto puede pasar directamente a la siguiente sección. 
+Con la intención de que este texto sea lo más accesible posible, dedicaremos esta sección a explicar qué son las presentaciones de grupos y a dar una pequeña introducción a la teoría de homotopía. El lector familiarizado con estos conceptos puede pasar directamente a la siguiente sección. 
 
-SACARLO DE YAGO
 
-\subsection{Grupos libres}
+\subsection{Presentaciones de grupos}
 \begin{definicion}
 	Sea $X$ un conjunto, $L$ un grupo e $i:X\to L$ una función. Diremos que $(L,i)$ es \textbf{libre} en $X$ si para todo grupo $H$ y toda función $f:X\to H$ existe un único homomorfismo $\varphi:L\to H$ de modo que el siguiente diagrama conmuta
 	\[
@@ -169,55 +169,237 @@ Por tanto, cualesquiera presentaciones de un grupo son equivalentes, y por tanto
 
 Volviendo al problema de la palabra, sea $G=\gene{X\mid R}$ finita y $w\in (X\cup X^{-1})^*$. Entonces $w=_G 1$ si y solo si $w\in \gene{R^{\gene{X\mid\ }}}$ si y solo si $w=\displaystyle\prod_{i=1}^M p_ir_i^{\varepsilon_i}p_i^{-1}$ en $\gene{X\mid\ }$, donde $r_i\in R, p_i\in\gene{X\mid\ }, \varepsilon_i=\pm 1$. EN ALGUNA PARTE TENGO QUE ESCRIBIR LAS NOTACIONES $X^{-1}$ Y LO DEL LENGUAJE COMO ASTERISCO DEL ALFABETO
 
-TENGO QUE HACER ALGUNA INTRODUCIÓN BÁSICA DE HOMOTOPÍA, INCLUYENDO CONCATENACIÓN DE CAMINOS
-%Cada artículo tendrá su propia portada (para que se puedan descargar por separado y quede recogida toda la información del artículo en dicha portada), parecida a la de esta plantilla.
-%En esta página deberá aparecer toda la información del autor o los autores y del artículo en cuestión.
-%Nótese que toda la información se puede introducir antes o después del \verb+\begin{document}+, salvo los resúmenes que deben ir siempre después.
-%La portada se genera después de los resúmenes mediante el uso del comando \verb+\maketitle+.
-%
-%Se debe poner el título del artículo con el comando \verb+\title{}+.
-%Si se trata de un título largo (tanto que no cabe en la cabecera de las páginas de la revista), se deberá proporcionar también un título corto.
-%Para ello, se deben rellenar los dos campos como sigue: \verb+\title[Título corto, opcional]{Título del artículo}+.
-%Se puede ver un ejemplo de esto y de todo lo posterior en el archivo \verb+PlantillaTEMat.tex+ de esta plantilla.
-%
-%Es necesario incluir el nombre y los apellidos para cada autor, así como su afiliación (en qué universidad (u otro lugar) estudia o trabaja).
-%También existe la posibilidad de incluir un correo electrónico, por si alguien quiere contactar al autor para preguntar más sobre el tema, pero poner esto es opcional.
-%Para introducir estos datos, se deben utilizar los siguientes comandos:
-%\begin{itemize}
-%\item \verb+\author{Apellido o Apellidos, Nombre}+ para el nombre (este comando debe ser el primero en aparecer para cada autor);
-%\item \verb+\affiliation{Afiliación}+ para indicar la afiliación académica o lugar de trabajo;
-%\item \verb+\email{email}+, de forma opcional, para indicar una dirección de correo electrónico de contacto, y
-%\item \verb+\authornote{Nota al pie}+, de forma opcional, para añadir una breve nota al pie sobre esa persona.
-%\end{itemize}
-%En el mundo de las matemáticas, la práctica más habitual es poner a los autores por orden alfabético de apellido, sin darle más énfasis a uno que a los otros, y nosotros aconsejamos esta práctica; sin embargo, mantendremos el orden en que estén en el envío.
-%
-%Cuando solamente hay un autor, debe usarse el comando \verb+\author*+ (con asterisco) para indicar su nombre. Si hay más de uno, la persona de contacto deberá usar el comando con asterisco y el resto deberán usarlo sin asterisco.
-%
-%Deberá haber una lista con las palabras clave del artículo, que se debe definir con \verb+\keywords{}+, separándolas por comas (y sin añadir punto final).
-%También se debe incluir la clasificación del tema del artículo según la MSC2010 (2010 Mathematics Subject Classification) usando \verb+\msc{}+.
-%Para los que no conozcan esto, se debe buscar en la página \url{http://www.ams.org/msc/msc2010.html} el código (o códigos) que mejor se correspondan con la temática del artículo que se presenta.
-%De ser posible, se debe poner uno solo; en caso de haber varios temas relacionados, recomendamos que no se pongan más de cinco códigos.
-%
-%Debajo de esta información aparecen la fecha de recepción y de aceptación del artículo presentado.
-%Las que hay en la plantilla están a modo de ejemplo; estos campos los rellenarán los editores de la revista para cada artículo.
-%En la versión final de los artículos, aparece también la información bibliográfica del trabajo.
-%
-%En la misma página aparecerán los agradecimientos (en caso de haberlos), así como las fuentes de financiación (en caso de haberlas).
-%Para introducirlas, se utiliza \verb+\acknowledgements{}+.
-%
-%Finalmente, se debe proporcionar un resumen (o \textit{abstract}) del artículo que se envía. Este resumen debe redactarse tanto en castellano como en inglés.
-%Para ello, se define un entorno de resumen delimitado por \verb+\begin{abstract}+ y \verb+\end{abstract}+ para el idioma principal (castellano por defecto) y \verb+\begin{abstract}[english]+ \verb+\end{abstract}+ para inglés.
-%El resumen debe aportar información suficiente como para saber de qué trata el artículo y cuáles son las aportaciones principales, pero debe ser lo suficientemente corto como para que no se salga de la portada ninguno de los campos que deben estar en ella.
-%
-%Una vez se han indicado todos los campos de la portada, debe añadirse el comando \verb+\maketitle+, que aparecerá después de todos ellos y justo antes de empezar con el contenido del artículo.
-%
-%Para anonimizar el documento para la revisión, basta con cargar la clase \verb+revistaanem+ con la opción \verb+anonimo+ (aunque también \verb+anon+, \verb+anonymous+, \verb+revision+ o \verb+review+).
-%Sería así, \verb+\documentclass[anon]{TEMat-article}+
-%
-%Insistimos: hay ejemplos de todo en \verb+PlantillaTEMat.tex+.
-%
 
+\subsection{Teoría de homotopía}
+REVISAR LOS SIGNOS DE PUNTUACIÓN EN LAS ECUACIONES
 
+Para definir algunos conceptos necesitaremos ciertas nociones básicas de teoría de homotopía que procedemos a enunciar.
+
+\begin{definicion} Sean $f,g:X\to Y$ funciones continuas y sea $I=[0,1]$. Decimos que $f$ y $g$ son \textbf{homotópicas}, denotado $f\simeq g$, si existe $H:X\times I\to Y$ continua tal que $H(x,0)=f(x)$ y $H(x,1)=g(x)$. A la aplicación $H$ la llamamos \textbf{homotopía} entre $f$ y $g$. %Si una de las funciones es constante, decimos que la otra es \textbf{nul-homotópica}. 
+		Si $A\subseteq X$, decimos que $f$ y $g$ son \textbf{homotópicas relativamente} a $A$ si la homotopía $H$ cumple además $H(a,t)=f(a)=g(a)\ \forall a\in A$. Si $A$ es un conjunto unitario hablamos de \textbf{homotopía basada}. %En contraposición a la homotopía relativa, a la homotopía que no cumple esa condición se le llama homotopía \textbf{libre}.
+\end{definicion}
+
+\begin{lema} Ser homotópicas es una relación de equivalencia (también serlo relativamente).
+\end{lema}
+\begin{demostracion}\
+	\begin{itemize}
+		\item Reflexiva: $f\simeq f$ mediante $H(x,t)=f(x)$.
+		\item Simétrica: si $f\simeq g$ mediante $H$, entonces $g\simeq f$ mediante $\widetilde{H}(x,t)=H(x,1-t)$. Se cumplen
+		\begin{gather*}
+		\widetilde{H}(x,0)=H(x,1)=g(x)\\
+		\widetilde{H}(x,1)=H(x,0)=f(x)
+		\end{gather*}
+		Se deja como ejercicio probar que $\widetilde{H}$ es continua.
+		\item Transitiva: sea $f\simeq g$ mediante $F$ y $g\simeq h$ mediante $G$. Entonces, $f\simeq h$ mediante
+		\begin{equation*}
+		H(x,t)=\left\{\begin{array}{ccc}
+		F(x,2t) & \text{si} & 0\leq t\leq\frac{1}{2}\\
+		G(x,2t-1) & \text{si} & \frac{1}{2}\leq t\leq 1
+		\end{array}\right.\Longrightarrow\left\{\begin{array}{c}
+		H(x,0)=F(x,0)=f(x)\\
+		H(x,1)=G(x,1)=h(x)
+		\end{array}\right.
+		\end{equation*}
+		Está bien definida en $t=\frac{1}{2}$ pues $F(x,1)=g(x)=G(x,0)$. Se deja como ejercicio probar la continuidad de $H$ y adaptar la demostración al caso relativo.
+	\end{itemize}
+\end{demostracion}
+
+\subsection{Caminos}
+REVISAR LAS DEMOSTRACIONES, QUE NO HAYA ASTERISCOS 
+\begin{definicion}
+Dado un espacio topológico $X$, un \textbf{camino} entre $x$ e $y$ pertenecientes a $X$ es una aplicación continua $\alpha:[0,1]\to X$ tal que $\alpha(0)=x$ y $\alpha(1)=y$. %Se dice que $\alpha$ es un \textbf{lazo} si $\alpha(0)=\alpha(1)$.
+\end{definicion}
+
+\begin{definicion} Dados $\alpha,\beta:I\to X$ dos caminos con $\alpha(0)=x,\alpha(1)=\beta(0)=y,\beta(1)=z$, se llama \textbf{concatenación} de $\alpha$ y $\beta$ al camino definido como
+	\begin{equation*}
+	\alpha\beta(t)=\left\{\begin{array}{lcc}
+	\alpha(2t) & si & 0\leq t\leq\frac{1}{2}\\
+	\beta(2t-1) & si & \frac{1}{2}\leq t\leq 1
+	
+	\end{array}\right.
+	\end{equation*}
+\end{definicion}
+
+HACERLA DE NUEVO EN GEOGEBRA PARA QUE SEA VECTORIAL
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.15]{Imagenes/yux}
+	\caption{La concatenación $\alpha\beta$ es el camino resultante desde $x$ hasta $z$.}
+\end{figure}
+
+\begin{nota} Si $\alpha$ y $\beta$ son equivalentes escribimos $\alpha\sim\beta$ en lugar de $\alpha\simeq\beta$ relativamente a $\{0,1\}$.
+\end{nota}
+
+\begin{lema} La concatenación es compatible con la equivalencia de caminos. ENUNCIAR LO QUE SIGNIFICA ESTA COMPATIBILIDAD
+\end{lema}
+\begin{demostracion}
+	Sean $\alpha\sim\alpha'$ y $\beta\sim\beta'$ con $\alpha(0)=\alpha'(0)=x$, $\alpha(1)=\alpha'(1)=\beta(0)=\beta'(0)=y$ y $\beta(1)=\beta'(1)=z$.\\
+	$\alpha\sim\alpha'\Rightarrow\exists\ H$ homotopía entre $\alpha$ y $\alpha'$ relativa a $\{0,1\}$.\\
+	$\beta\sim\beta'\Rightarrow\exists\ G$ homotopía entre $\beta$ y $\beta'$ relativa a $\{0,1\}$.
+	
+	Sea $F:I\times I\to X$ la homotopía resultante de ``unir'' las dos anteriores
+	\[
+	F(t,s)=\left\{\begin{array}{l c c}
+	H(2t,s) & si & 0\leq t\leq\frac{1}{2}\\
+	G(2t-1,s) & si &\frac{1}{2}\leq t\leq 1
+	
+	\end{array}\right.
+	\]
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.28]{Imagenes/yuxta}
+	\end{figure}
+	
+	$F(\frac{1}{2},s)$ está bien definida pues, al ser $H$ y $G$ relativas al $\{0,1\}$ se tiene que $H(1,s)=y=G(0,s)$. Finalmente,
+	\[
+	F(t,0)=\left\{\begin{array}{lcc}
+	H(2t,0)=\alpha(2t) & si & 0\leq t\leq\frac{1}{2}\\
+	G(2t-1,0)=\beta(2t-1) & si & \frac{1}{2}\leq t\leq 1
+	\end{array}\right.
+	\]
+	que es justamente la concatenación de $\alpha$ y $\beta$. Análogamente $F(t,1)=(\alpha'\beta')(t)$. Finalmente,
+	\[
+	\left.\begin{array}{c}
+	F(0,s)=H(0,s)=x\\
+	F(1,s)=G(1,s)=z
+	\end{array}\right\}\Rightarrow \alpha\beta\sim\alpha'\beta'
+	\]
+	
+\end{demostracion}
+
+\begin{proposicion} Se cumplen las siguientes propiedades de la yuxtaposición con respecto a la equivalencia de caminos.
+	\begin{enumerate}
+		\item Propiedad asociativa: $(\alpha\beta)\gamma\sim\alpha(\beta\gamma)$ HACERLA EN GEOGEBRA SI ES QUE LO INCLUYO
+		\begin{figure}[h!]
+			%\raggedright
+			\centering
+			\includegraphics[scale=0.2]{Imagenes/propi1}
+		\end{figure}
+		
+		\item Elemento neutro: si $c_x$ es el camino constante $x$ y $\alpha$ es un camino entre $x$ e $y$, entonces  $c_x\alpha\sim\alpha\sim\alpha c_y$. DIBUJO EN GEOGEBRA SI ES QUE LO INCLUYO
+		\begin{figure}[h!]
+			%\raggedright
+			\centering
+			\includegraphics[scale=0.1]{Imagenes/propi2}
+		\end{figure}
+		\item Elemento inverso: si $\alpha$ es un camino entre $x$ e $y$ y $\overline{\alpha}:I\to X$ es el camino $\overline{\alpha}(t)=\alpha(1-t)$ (camino opuesto), entonces $\alpha\overline{\alpha}\sim c_x$ y $\overline{\alpha}\alpha\sim c_y$.
+	\end{enumerate}
+\end{proposicion}
+\begin{demostracion}Por definición tenemos por un lado
+	\begin{enumerate}
+		\item $$\alpha(\beta\gamma)(t)=\left\{\begin{array}{lc}
+		\alpha(2t) & 0\leq t\leq\frac{1}{2},\\
+		\beta\gamma(2t-1) & \frac{1}{2}\leq t\leq 1,
+		\end{array}\right.=\left\{\begin{array}{lc}
+		\alpha(2t) & 0\leq t\leq\frac{1}{2},\\
+		\beta(4t-2) & \frac{1}{2}\leq t\leq\frac{3}{4},\\
+		\gamma(4t-3) & \frac{3}{4}\leq t\leq 1,
+		\end{array}\right.$$
+		y por otro 
+		
+		$$(\alpha\beta)\gamma(t)=\left\{\begin{array}{lc}
+		(\alpha\beta)(2t) & 0\leq t\leq\frac{1}{2,}\\
+		\gamma(2t-1) & \frac{1}{2}\leq t\leq 1,
+		\end{array}\right.=\left\{\begin{array}{lc}
+		\alpha(4t) & 0\leq t\leq\frac{1}{4},\\
+		\beta(4t-1) & \frac{1}{4}\leq t\leq\frac{1}{2},\\
+		\gamma(2t-1) & \frac{1}{2}\leq t\leq 1
+		\end{array}\right. .$$
+		%\begin{figure}[h!]
+		%	\includegraphics[scale=0.28]{dempropi2}
+		%\end{figure}
+		%\definecolor{zzttqq}{rgb}{0.6,0.2,0.} \fill[color=zzttqq,fill=zzttqq,fill opacity=0.1]
+%		\definecolor{zzttqq}{rgb}{0.6,0.2,0.}
+%		\begin{center}
+%			\definecolor{ffffff}{rgb}{1.,1.,1.}
+%			\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+%			\clip(-0.12,-1) rectangle (7,3.65);%6533333333333324
+%			\fill[color=ffffff,fill=ffffff,fill opacity=0.1] (0.,3.) -- (0.,0.) -- (4.,0.) -- (4.,3.) -- cycle;
+%			\fill[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0,0) -- (0,3) -- (4,3) -- (4,0) --cycle;
+%			\draw (0.,3.)-- (0.,0.);
+%			\draw (0.,0.)-- (4.,0.);
+%			\draw (4.,0.)-- (4.,3.);
+%			\draw (4.,3.)-- (0.,3.);
+%			\draw (1.,0.)-- (2.,3.);
+%			\draw (2.,0.)-- (3.,3.);
+%			\draw (2.04,0.05) node[anchor=north west] {$\frac{1}{2}$};
+%			\draw (1.0,0.05) node[anchor=north west] {$\frac{1}{4}$};
+%			\draw (2.0,3.05) node[anchor=north west] {$\frac{1}{2}$};
+%			\draw (3.0,3.05) node[anchor=north west] {$\frac{3}{4}$};
+%			\draw (1.226666666666667,3.76) node[anchor=north west] {$\alpha(\beta\gamma)$};
+%			\draw (1.226666666666667,-0.5) node[anchor=north west] {$(\alpha\beta)\gamma$};
+%			\fill[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0,0) -- (0,3) -- (4,3) -- (4,0) --cycle;
+%			\end{tikzpicture}
+%		\end{center}
+		Sea por lo tanto
+		\[
+		F(t,s)=\left\{\begin{array}{lcc}
+		\alpha\left(\frac{4t}{s+1}\right) & si & 0\leq t\leq\frac{s+1}{4}\\
+		\beta\left(4t-(s+1)\right) & si & \frac{s+1}{4}\leq t\leq\frac{s+2}{4}\\
+		\gamma\left(\frac{4t-s-2}{2-s}\right) & si & \frac{s+2}{4}\leq t\leq 1
+		\end{array}\right.
+		\]
+		Se tiene que $F$ es una homotopía relativa a $\{0,1\}$ entre $F(t,0)=(\alpha\beta)\gamma(t)$ y $F(t,1)=\alpha(\beta\gamma)(t)$.
+		
+		\item Para probar $c_x\alpha\sim\alpha$ definimos la homotopía
+		\[
+		F(t,s)=\left\{\begin{array}{lcc}
+		x & si & 0\leq t\leq\frac{1-s}{2}\\
+		\alpha\left(\frac{2t+s-1}{s+1}\right) & si & \frac{1-s}{2}\leq t\leq 1
+		\end{array}\right.
+		\]
+%		\definecolor{zzttqq}{rgb}{0.6,0.2,0.}
+%		\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+%		\clip(-4,-0.5) rectangle (8.29,2.5);
+%		\draw (0.,0.)-- (4.,0.);
+%		\draw (4.,0.)-- (4.,2.);
+%		\draw (4.,2.)-- (0.,2.);
+%		\draw (0.,2.)-- (0.,0.);
+%		\draw (0.,2.)-- (2.,0.);
+%		\draw (1.65,2.56) node[anchor=north west] {$\alpha$};
+%		\draw (0.73,0.06) node[anchor=north west] {$c_x$};
+%		\draw (2.86,0.06) node[anchor=north west] {$\alpha$};
+%		\draw (1.9,0.09) node[anchor=north west] {$\frac{1}{2}$};
+%		\fill[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0,0)--(0,2)--(4,2)--(4,0)--cycle;
+%		\end{tikzpicture}
+		
+		La relación $\alpha\sim\alpha*c_y$ se demuestra de manera análoga.
+		
+		\item Se tiene $\alpha*\overline{\alpha}(t)=\left\{\begin{array}{lc}
+		\alpha(2t) & 0\leq t\leq\frac{1}{2}\\
+		\overline{\alpha}(2t-1)=\alpha(2-2t) & \frac{1}{2}\leq t\leq 1
+		\end{array}\right.$\\
+		
+%		\definecolor{zzttqq}{rgb}{0.6,0.2,0.}
+%		\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+%		\clip(-4,-0.5) rectangle (8.29,2.5);
+%		\draw (0.,0.)-- (4.,0.);
+%		\draw (4.,0.)-- (4.,2.);
+%		\draw (4.,2.)-- (0.,2.);
+%		\draw (0.,2.)-- (0.,0.);
+%		\draw (0.,2.)-- (2.,0.);
+%		\draw (1.83,2.52) node[anchor=north west] {$c_x$};
+%		\draw (2.88,0) node[anchor=north west] {$\overline{\alpha}$};
+%		\draw (0.8,0) node[anchor=north west] {$\alpha$};
+%		\draw (1.9,0.09) node[anchor=north west] {$\frac{1}{2}$};
+%		\draw (2.,0.)-- (4.,2.);
+%		\fill[color=zzttqq,fill=zzttqq,fill opacity=0.1] (0,0)--(0,2)--(4,2)--(4,0)--cycle;
+%		\end{tikzpicture}
+%		
+%		Entonces la ecuación
+%		\[
+%		F(t,s)=\left\{\begin{array}{lcc}
+%		\alpha(2t) & si & 0\leq t\leq\frac{1-s}{2}\\
+%		\alpha(1-s) & si & \frac{1-s}{2}\leq t\leq \frac{1+s}{2}\\
+%		\alpha(2-2s) & si & \frac{1+s}{2}\leq t\leq 1
+%		\end{array}\right.
+%		\]
+%		
+		
+		
+		define una homotopía relativa a $\{0,1\}$ entre $\alpha\overline{\alpha}$ y $c_x$. Análogamente se encuentra una homotopía relativa a $\{0,1\}$ entre $\overline{\alpha}\alpha$ y $c_y$.
+	\end{enumerate}
+\end{demostracion}
 \section{Grupos de trenzas}
 
 EN LA BIBLIO TENGO QUE METER MI TFG AUNQUE NO LO CITE, EL COMANDO ANDABA POR LA PLANTILLA
@@ -491,7 +673,49 @@ En la Figura \ref{generador} se puede observar qué trenza representa geométric
 El objetivo de esta sección será proporcionar una \emph{forma normal} para las trenzas, es decir, una forma ``estándar'' de escribirlas, de modo que para ver si dos palabras representan la misma trenza sea suficiente calcular sus formas normales y comprobar si son iguales. Para llegar hasta esa forma normal estudiaremos la \emph{estructura de Garside} del grupo de trenzas. Los resultados referentes a \emph{Word processing in groups} \cite{Thurston} se pueden encontrar en el capítulo 9 de dicho libro.
 
 
+
+
+\subsection{Monoides}
+ALOMEJOR ESTO A LOS PRELIMINARES
+
+Empezaremos hablando de monoides, puesto que dentro del grupo de trenzas hay un monoide importante que nos permitirá desarrollar el algoritmo para resolver el problema de la palabra.
+
+
+
+\begin{definicion}
+	Un \textbf{monoide} es un par $(S,*)$, donde $S$ es un conjunto y $*:S\times S\to S$ es una operación binaria satisfaciendo:
+	\begin{itemize}
+		\item Asociatividad, es decir, para cualesquiera $a,b,c\in S$, $(a*b)*c=a*(b*c)$.
+		\item Existencia de elemento neutro, es decir, existe $e\in S$ tal que para todo $a\in S$, $e*a=a*e=a$. 
+	\end{itemize}
+	Habitualmente el símbolo de la operación será omitido y nos referiremos a $S$ como monoide, entendiéndose que en realidad es el par anterior.
+\end{definicion}
+
+\begin{observacion}
+	Un monoide es análogo a un grupo, pero sin requerir la existencia de elementos inversos.
+\end{observacion}
+
+De forma análoga a como se hace para grupos, podemos considerar los generadores de un monoide y una presentación de un monoide mediante generadores y relaciones. También se definen de forma análoga los morfismos entre monoides. 
+
+\begin{definicion}
+	Dado un monoide $S$ con presentación $\langle M\mid R\rangle$, su \textbf{grupo de fracciones} $G(S)$ es el grupo generado por la misma presentación.
+\end{definicion}
+
+Existe una aplicación natural de un monoide en su grupo de fracciones. Sin embargo, esta aplicación no siempre es inyectiva, pues la existencia de inverso en el grupo puede hacer que dos elementos distintos del monoide representen el mismo elemento del grupo de fracciones. Por ejemplo, si consideramos la presentación $\langle a,b,c\mid ab=cb\rangle$, los elementos $a$ y $c$ son distintos en el monoide; sin embargo, en el grupo son el mismo, pues multiplicando a la derecha por $b^{-1}$ en la relación obtenemos $a=c$. De aquí que consideremos la siguiende definición.
+
+\begin{definicion}
+	Decimos que un monoide $S$ se \textbf{inyecta} en su grupo de fracciones $G(S)$, si el morfismo de monoides $\iota: S\to G(S)$ dado por $\iota(a)=a$ es inyectivo.
+\end{definicion}
+
+\begin{definicion}\label{condiciones}
+	Decimos que un monoide $S$ satisface las \textbf{condiciones de Ore} \cite{Ore} si se cumple:
+	\begin{itemize}
+		\item $S$ es cancelativo, es decir, $xay=xby$ implica $a=b$ para todo $x,y,a,b\in S$. 
+		\item Para todo $a,b\in S$ existen $a',b'\in S$ tales que $aa'=bb'$ (existe un múltiplo común). 
+	\end{itemize}
+\end{definicion}
 \subsection{Formas normales}
+
 Obsérvese que la presentación \ref{presentacion} solo involucra potencias positivas de los generadores. Por tanto, se puede considerar el monoide $B_n^+$ determinado por esa misma presentación. Los elementos de $B_n^+$ son palabras en $\sigma_1,\dots,\sigma_{n-1}$ (pero no sus inversos), y dos palabras son equivalentes si y solo si una puede obtenerse de la otra reemplazando reiteradamente subpalabras de la forma $\sigma_i\sigma_j$ con $|i-j|>1$ (respectivamente, $\sigma_i\sigma_j\sigma_i$ con $|i-j|=1$) por $\sigma_j\sigma_i$ (respectivamente, $\sigma_j\sigma_i\sigma_j$).
 
 \begin{definicion}
@@ -681,288 +905,8 @@ Alternativamente, podríamos empezar con una descomposición $w=\Delta^qA$ con $
 	\end{align*}
 	Ahora tenemos la situación inversa: aparentemente podríamos añadir $\sigma_2$ al primer bloque, pero utilizando la misma relación de la presentación del grupo de trenzas que antes, nos aparecería $\sigma_2$ dos veces consecutivas, por lo que hemos finalizado el proceso y $\alpha_2=\Delta^0b_1b_2$ con $b_1=b_{1,1}$ y $b_2=b_{2,1}$. Obsérvese que el bloque que hemos pasado a la izquierda ($\sigma_2\sigma_1$) se corresponde con $b_{2,0}\land (b_{1,0}^{-1}\Delta)$ y el bloque resultante $(\sigma_3\sigma_1\sigma_2\sigma_1)$ se corresponde con $\alpha_2\land\Delta$ en el algoritmo original de El-rifai y Morton. Además es claro que ninguno de los factores es una potencia de $\Delta$.
 	\end{ejemplo}
-%La principal herramienta para un matemático al usar \LaTeX{} son las fórmulas matemáticas.
-%Todas las fórmulas aparecerán automáticamente en letra itálica, distinguiendo así el entorno de matemáticas del texto normal.
-%Para añadir fórmulas, basta con usar \verb+\(+ y \verb+\)+, y escribir la fórmula matemática entre estos delimitadores.
-%En su defecto, se pueden usar también \verb+$+ y \verb+$+.
-%Así, se pueden escribir pequeñas fórmulas en entorno matemático, como \(x^3+y^3=z^3\) o $\nume^{\iunit\pi}=-1$.
-%Si se quiere poner fórmulas centradas y separadas del resto del párrafo, se deben emplear los delimitadores \verb+\[+ y \verb+\]+ (\textbf{no} puedes usar \verb+$$+ y \verb+$$+, puede estropear el formato de la revista\footnote{En realidad, no quieres usar los dobles dólares en ningún documento. ¿El motivo? A diferencia de otros entornos, no tienen bien ajustado el espaciado.}), para conseguir formas del estilo de
-%\[\sum_{i=1}^n\frac{1}{i}\approx\log n.\]
-%Sí, las fórmulas son parte del texto, de modo que van seguidas de los signos de puntuación correspondientes.
-%Si además se quiere que la fórmula quede numerada, se puede usar \verb+\begin{equation}+ y \verb+\end{equation}+, de modo que resulte
-%\begin{equation}\label{equa:ejemplo1}
-%\int_{1}^x\frac{1}{t} \diff t = \log x.
-%\end{equation}
-%Existen otras muchas formas más complejas de introducir ecuaciones, con entornos como \verb+align+ y otros muchos.
-%Recomendamos buscar información sobre estos entornos por internet.
-%También se debe buscar información sobre cómo introducir caracteres especiales y diferentes símbolos matemáticos.
-%Por ejemplo, para referirnos a los números naturales, enteros, etc. ($\mathbb{N}$, $\mathbb{Z}$, $\mathbb{Q}$...) se utiliza el comando \verb+\mathbb{}+.
-%Se puede encontrar información sobre estos símbolos en páginas como \url{https://www.artofproblemsolving.com/wiki/index.php/LaTeX:Symbols} o \url{http://detexify.kirelabs.org/classify.html} (que permite dibujar el símbolo que buscas).
-%
-%A menudo es frecuente querer referirse a una ecuación que se ha escrito antes (para eso se utiliza la numeración de las fórmulas).
-%Así, para referirnos a la fórmula \eqref{equa:ejemplo1}, tenemos que escribir el comando \verb+\eqref{formula}+, donde el nombre de la fórmula se asigna con un \verb+\label+, como podéis comprobar en la ecuación anterior en el archivo \verb+PlantillaTEMat.tex+.
-%Alternativamente, se puede utilizar \verb+\cref{nombre}+.
-%
-%\subsection{Entornos matemáticos}
-%
-%Además del entorno básico para escribir matemáticas, los matemáticos siempre escriben teoremas, corolarios, demostraciones..., y para cada uno de los tipos de enunciado hay un entorno propio.
-%\textbf{Se deben usar estos entornos para mantener el estilo de la revista}.
-%Para usar cada uno de ellos se debe empezar con un \verb+\begin{nombreentorno}+ y terminar con un \verb+\end{nombreentorno}+.
-%Por ejemplo, podemos escribir teoremas como los que siguen.
-%
-%\begin{teorema}[del punto gordo]\label{teor:ejemplo1}
-%Dadas tres \emph{rectas} $r$,\/ $s$ y\/ $t$ en\/ $\mathbb{R}^2$, existe un punto tal que las tres rectas se intersecan en él (vaya, que se cortan).
-%\end{teorema}
-%
-%\begin{demostracion}
-%Basta con tomar un punto suficientemente gordo.
-%\end{demostracion}
-%
-%\begin{teorema}\label{teor:ejemplo2}
-%Contrario a la creencia común,
-%\[\frac{0}{0}=2.\]
-%\end{teorema}
-%
-%\begin{demostracion}[Demostración por simplificación de ceros]
-%Lo demostramos con la siguiente cadena de igualdades:
-%\[\frac{0}{0}=\frac{100-100}{100-100}=\frac{(10+10)(10-10)}{10\,(10-10)}=\frac{20}{10}=2.\qedhere\]
-%\end{demostracion}
-%
-%\begin{nota*}
-%En general, vamos a intentar que teoremas de este estilo que mandéis no se publiquen. Os vigilamos.
-%\end{nota*}
-%
-%Para añadir información al encabezado del teorema (como un nombre, autor, año...) se debe incluir entre corchetes (\verb+[]+) después del \verb+\begin{teorema}+, como en el \autoref{teor:ejemplo1}.
-%Además, hay un detalle importante en cuanto a las demostraciones.
-%El cuadradito negro aparecerá automáticamente al final de la demostración, pero no estará bien colocado si la demostración acaba con una fórmula.
-%En ese caso, se debe incluir la instrucción \verb+\qedhere+ al final de la última fórmula, como sucede en la demostración del \autoref{teor:ejemplo2}.
-%
-%Los entornos que hemos habilitado son teorema, proposición, corolario, lema, propiedad, conjetura, hecho, criterio, axioma, definición, ejemplo, ejercicio, problema, pregunta, hipótesis, observación, convención, nota, notación, afirmación, caso, algoritmo, solución y, por supuesto, demostración.
-%Para crear cualquiera de ellos, pon su nombre (sin tilde) en \verb+nombreentorno+, o sus nombres habituales en inglés, o alguna de las abreviaciones más habituales (no garantizamos que tu abreviación favorita vaya a funcionar; si no funciona, escribe el nombre completo).
-%No, no hay más entornos.
-%Si crees que alguno más es absolutamente necesario, ponte en contacto con nosotros.
-%
-%En general, cada vez que se empiece a trabajar en un entorno, este aparecerá numerado.
-%Si el autor quiere que no sea así, basta con añadir un asterisco (\verb+*+) después de \verb+nombreentorno+ (por ejemplo, \verb+teorema*+).
-%
-%También es muy frecuente querer referirnos a resultados que ya hemos escrito, como el \autoref{teor:ejemplo1}. Para hacerlo, basta con usar \verb+\autoref{nombreteorema}+ o \verb+\cref{nombreteorema}+, donde al teorema se le ha dado un nombre usando \verb+\label+ (de nuevo, puedes comprobar cómo en el archivo \verb+PlantillaTEMat.tex+).
-%Haciendo esto, si tienes el documento en pdf, puedes pinchar en \autoref{teor:ejemplo2} para que te muestre directamente el resultado al que se refiere, cosa muy útil a la hora de leer artículos.
-%
-%\subsection{Sistema Internacional}
-%
-%Para escribir números grandes o magnitudes físicas, hemos cargado el paquete \verb+siunitx+.
-%Si queréis saber cómo se usa, solamente tenéis que echarle un vistazo a la documentación~\cite{siunitx}.
-%Brevemente, para escribir un número como \num{10000}, usa \verb+\num{10000}+ (y así se verá el espacio recomendado cuando hay más de cuatro cifras).
-%Esperamos que el \SI{100}{\percent} de los autores que usen unidades en sus artículos aprovechen su uso.
-%Especialmente porque, como dice \citet{bezosOM}, las unidades se escriben en letra redonda y con un espacio entre el número y la unidad.
-%Por ejemplo, para escribir \SI{9.8}{m.s^{-2}} se puede usar \verb+\SI{9.8}{m.s^{-2}}+ o bien \verb+\SI{9.8}{\metre\per\square\second}+.
 
-%\section{Paquetes}
-%
-%Hay determinados paquetes que se cargan de manera automática al utilizar la clase \verb+revistaanem+.
-%Estos paquetes tienen que estar instalados para que el archivo pueda compilar y se pueda trabajar con las plantillas de la revista.
-%Por supuesto, no hace falta volver a cargar estos paquetes en el preámbulo de vuestro documento.
-%Los paquetes que utilizamos (y que no se pueden quitar) son \verb+expl3+, \verb+xparse+, \verb+l3keys2e+, \verb+silence+, \verb+afterpackage+, \verb+calc+, \verb+etoolbox+, \verb+amsmath+, \verb+amssymb+, \verb+amsthm+, \verb+cabin+, \verb+newtxmath+,  \verb+thmtools+, \verb+babel+ (con las opciones \verb+british+ y \verb+spanish+), \verb+csquotes+, \verb+microtype+, \verb+bm+, \verb+stackengine+, \verb+scalerel+, \verb+siunitx+, \verb+mleftright+, \verb+cancel+, \verb+mathtools+, \verb+graphicx+, \verb+caption+, \verb+subcaption+, \verb+biblatex+ \verb+geometry+, \verb+xcolor+, \verb+enumitem+, \verb+titlesec+, \verb+fancyhdr+, \verb+ccicons+, \verb+xpatch+, \verb+hyperref+, \verb+cleveref+, \verb+fontawesome+ y \verb+environ+.
-%Además, si usas LaTeX estándar, se cargan también \verb+fontenc+, \verb+inputenc+, \verb+erewhon+ e \verb+inconsolata+; con LuaLaTeX y XeLaTeX se carga \verb+fontspec+, y las tipografías \verb+Erewhon+ e \verb+Inconsolatazi4+.
-%
-%Por otra parte, hay otros muchos paquetes que no incluimos obligatoriamente, pero que muchos de vosotros querréis usar.
-%Para utilizarlos, basta con que los carguéis de la forma habitual.
-%
-%\subsection{Figuras, dibujos y diagramas}\label{sec:diagramas}
-%En muchos artículos puede ser interesante insertar una imagen que ayude a comprender aquello que estamos explicando.
-%Como norma general, dibujos, diagramas e imágenes en general deberían aparecer como figuras autocontenidas.
-%¿Qué queremos decir con autocontenidas?
-%Pues que se puedan entender por sí solas, sin necesidad de tener que leer detalladamente el texto.
-%Para ello, es bueno que estén dentro de un entorno \verb+figure+ y tengan una etiqueta descriptiva usando el comando \verb+caption+.
-%Podéis ver un ejemplo de ello en la \cref{fig:triangulos}, que además tiene subfiguras.
-%Igual que con las secciones y demás entornos, se puede usar el comando \verb+\label+ para referirse a ellas más tarde.
-%
-%\begin{figure}[hbt!]
-%  \centering
-%  \begin{subfigure}[b]{0.31\textwidth}
-%    \includegraphics[width=\textwidth]{triangulo-precompilado} % el nombre del archivo SIN la extensión (mejor)
-%    \caption{Un triángulo hecho con TikZ.}\label{fig:triangulo-tikz}
-%  \end{subfigure}
-%  \hspace{0.1\textwidth}
-%  \begin{subfigure}[b]{0.31\textwidth}
-%    \includegraphics[width=\textwidth]{triangulo-ps-precompilado} % el nombre del archivo SIN la extensión (mejor)
-%    \caption{Un triángulo hecho con PSTricks.}\label{fig:triangulo-pst}
-%  \end{subfigure}
-%  \caption{Ejemplo de figura y subfiguras con TikZ y PSTricks.}\label{fig:triangulos}
-%\end{figure}
-%
-%Si os fijáis bien en el contenido de las \cref{fig:triangulo-tikz,fig:triangulo-pst}, veréis que hemos usado el comando \verb+\includegraphics+.
-%Podéis encontrar más información sobre su uso en la documentación del paquete \verb+graphicx+~\cite[sec.~4]{graphics}.
-%
-%\subsubsection{Información avanzada}\label{sec:diagramas:avanzado}
-%Hemos probado tanto \verb+tikz+ como \verb+pstricks+.
-%En caso de usar TikZ, que es el que os recomendamos de los dos, podéis cargar directamente el paquete \verb+tikz+ en el preámbulo del documento.
-%Sin embargo, preferimos que aprovechéis el paquete \verb+standalone+, y que aprovechéis también que hemos preparado un paquete \verb+\TEMat-fonts+ para que podáis generar diagramas y documentos con las tipografías que usamos en la revista.
-%
-%La mayor ventaja de usar \verb+standalone+ es que permite compilar las imágenes por separado (podéis probarlo con los ejemplos).
-%Para facilitar la inclusión de gráficos con \verb+standalone+, hemos creado dos comandos que se activan al cargar dicho paquete.
-%Por ejemplo, el archivo \verb+triangulo.tex+ contiene el código TikZ para dibujar la \cref{fig:triangulo-tikz}.
-%Para incluirlo, usaríamos el comando \verb+\imagentikz+.
-%Del mismo modo, \verb+triangulo-ps.tex+ tiene el código PSTricks para la \cref{fig:triangulo-pst} y se puede incluir usando \verb+\imagenpstricks+.
-%Estos comandos aceptan las mismas opciones que \verb+\includegraphics+, pero en este caso no debe incluirse la extensión del fichero.
-%Así, por ejemplo, la \cref{fig:triangulos} podríamos haberla incluido como sigue:
-%\begin{verbatim}
-%\begin{figure}[hbt!]
-%  \centering
-%  \begin{subfigure}[b]{0.31\textwidth}
-%    \imagentikz[width=\textwidth]{triangulo}
-%    \caption{Un triángulo hecho con TikZ.}\label{fig:triangulo-tikz}
-%  \end{subfigure}
-%  \hspace{0.1\textwidth}
-%  \begin{subfigure}[b]{0.31\textwidth}
-%    \imagenpstricks[width=\textwidth]{triangulo-ps}
-%    \caption{Un triángulo hecho con PSTricks.}\label{fig:triangulo-pst}
-%  \end{subfigure}
-%  \caption{Ejemplo de figura y subfiguras con TikZ y PSTricks.}\label{fig:triangulos}
-%\end{figure}
-%\end{verbatim}
-%
-%Es importante que al compilar un documento que use estos comandos, o cualquier otro de los que muestra el paquete \verb+standalone+ en su documentación~\cite{standalone} para incluir archivos externos, incluyáis la opción \verb+-shell-escape+ (a veces \verb+-enable-write18+ con MiK\TeX).
-%Os recomendamos que os leáis la \cref{sec:apuntes} para más información sobre la compilación.
-%
-%Usar TikZ o PSTricks tiene resultados muy bonitos en formato vectorial.
-%Pero, evidentemente, se pueden incluir figuras hechas de cualquier otra forma, en formato pdf (por ejemplo), de la forma habitual, usando el comando \verb+\includegraphics+ del paquete \verb+graphicx+ que ya hemos incluido automáticamente.
-%
-%\begin{nota}
-%Si tenéis conocimientos algo más avanzados de \LaTeX{}, estos dos comandos para incluir diagramas no son más que alias del comando \verb+\includestandalone+ con la opción \verb+mode=buildnew+.
-%Además, en el caso de PSTricks, se debe incluir explícitamente la opción de compilar con \verb+xelatex+ porque ni \verb+pdflatex+ ni \verb+lualatex+ son compatibles.
-%\end{nota}
-%
-%\subsection{Algoritmos}
-%Podéis usar los paquetes \verb+algpseudocode+ (sin la opción \verb+noend+) o \verb+program+, aunque tenemos preferencia por \verb+algpseudocode+ (que está dentro de \verb+algorithmicx+~\cite{algorithmicx}).
-%Para evitar incompatibilidades, consultadnos antes de usar cualquier otro paquete de algoritmos.
-%
-%\begin{algoritmo}[escritura a ordenador]
-%\begin{algorithmic}[1]
-%\Procedure{Escritura}{}
-%\If{ordenador apagado}
-%\State encender ordenador
-%\If{ordenador apagado}
-%\If{ordenador enchufado}
-%\If{no hay corriente}
-%\State ... \Comment{El lector sabrá qué hacer}
-%\Else
-%\State ordenador roto
-%\EndIf
-%\EndIf
-%\Else
-%\State ... \Comment{Lo dejamos como ejercicio}
-%\EndIf
-%\EndIf
-%\EndProcedure
-%\end{algorithmic}
-%\end{algoritmo}
-%
-%\subsection{Configuraciones y paquetes prohibidos}
-%\textbf{Bajo ningún concepto} deben usarse los paquetes o configuraciones que aquí indicamos:
-%\begin{itemize}
-%\item \verb+natbib+ o cualquier otro paquete de bibliografía.
-%  Ya usamos \verb+biblatex+ con \verb+biber+, así que habría incompatibilidades.
-%\item \verb+setspace+, \verb+savetrees+ o cualquier paquete que permita cambiar el espaciado del texto.
-%  Eso implica que aunque carguemos nosotros el paquete \verb+geometry+ no deberíais usar los comandos \verb+geometry+, \verb+newgeometry+ y similares.
-%  Por supuesto, tampoco debéis usar el comando \verb+\setlength+ para cambiar márgenes ni ninguna medida del documento, salvo cosas propias vuestras.
-%\item Cualquier paquete que cambie las tipografías.
-%\end{itemize}
-%
-%\section{Uso de la bibliografía}
-%
-%Una de las partes más importantes de un artículo divulgativo es una buena bibliografía que permita, por un lado, comprobar de dónde se ha obtenido la información que se ha utilizado para redactar el artículo y, por otro, obtener fuentes en las que leer más información sobre el tema.
-%Para crear una bibliografía adecuada \textbf{se debe utilizar el paquete \texttt{biblatex}} con el \extranj{english}{backend} \verb+biber+ (que cargamos automáticamente) creando un fichero externo \verb+.bib+ con la bibliografía completa.
-%Entre los archivos de la plantilla hay un fichero llamado \verb+plantilla.bib+ que debería servir como ejemplo de uso de este tipo de archivos.
-%En cualquier caso, casi siempre se pueden encontrar sitios de los que copiar directamente la bibliografía en formato bibtex (se pueden buscar las referencias, por ejemplo, en MathSciNet (\url{http://www.ams.org/mathscinet/}) o en Google Scholar (\url{https://scholar.google.com/})).
-%Para incluir la bibliografía en el artículo, se debe emplear el comando \verb+\addbibresource{archivobibliografia.bib}+ en el preámbulo del documento (antes del \verb+\begin{document}+), como se puede ver en el archivo \verb+PlantillaTEMat.tex+, donde \verb+archivobibliografia.bib+ es el nombre que tenga vuestro documento (siempre debe ser un \verb+.bib+).
-%Para cargar la bibliografía, se debe escribir \verb+\printbibliography+ al final del documento, donde se quiera que vaya la bibliografía.
-%
-%Para referirse a elementos de la bibliografía, a cada uno de estos elementos se le asigna un nombre en el archivo \verb+.bib+.
-%Luego basta con usar la instrucción \verb+\cite{nombrereferencia}+ para que aparezca, proporcionando además un vínculo a la bibliografía del final del artículo.
-%
-%Toda la información sobre esto, y otras muchas cosas relacionadas con la bibliografía, la podéis encontrar en la documentación de \verb+biblatex+~\cite{biblatex}.
-%Si queréis buscar la versión más actualizada, es fácil encontrarla en su página de CTAN.\footnote{Acrónimo de \emph{Comprehensive \protect\TeX{} Archive Network}, ver \url{https://www.ctan.org/pkg/biblatex} y \url{https://www.ctan.org/}}
-%En esa misma web se pueden encontrar manuales de uso de casi todos los paquetes de \LaTeX.
-%
-%\begin{nota}
-%El comando \verb+\printbibliography+ hará que aparezcan solo los elementos que se han citado a lo largo del artículo.
-%Si hay alguna referencia que no se ha citado pero que también debería aparecer, se debe usar el comando \verb+\nocite{nombrereferencia}+.
-%Para que aparezcan todas las que no se han citado, se puede usar un asterisco: \verb+\nocite{*}+.
-%\end{nota}
-%
-%\begin{nota}
-%Para mejorar la calidad del texto, es recomendable no usar la salida del comando \verb+\cite+ como un sustantivo.
-%Como ejemplo, es mejor decir <<en la documentación de \texttt{biblatex}~\cite{biblatex} hay más información>> que <<en~\cite{biblatex} hay más información>>.
-%
-%También existe el comando \verb+\citet+ para referirse a un trabajo nombrando al autor.
-%Es bueno cuando quieres decir cosas del tipo <<\citet{bezosOM} muestra gran cantidad de información sobre cómo se deberían escribir las matemáticas a ordenador>>. Otra opción es usar \verb+\citeauthor+ combinado con \verb+\cite+, como en <<\citeauthor{bezosOM} muestra gran cantidad de información sobre cómo se deberían escribir las matemáticas a ordenador~\cite{bezosOM}>>, aunque recomendamos usar \verb+\citet+.
-%\end{nota}
-%
-%\begin{nota}
-%Si tenéis problemas con la bibliografía, podéis intentar añadir la opción \verb+bibtex+ al cargar la clase (por ejemplo, \verb+\documentclass[bibtex,anon]{TEMat-article}+).
-%Esta opción cambia la configuración para que se use el \extranj{english}{backend} \verb+bibtex+ en lugar de \verb+biber+ a la hora de extraer los datos bibliográficos del archivo con extensión \verb+bib+.
-%
-%Esta es una opción que hemos añadido por compatibilidad para instalaciones más antiguas, pero recomendamos que no se use.
-%Las versiones finales de los artículos aceptados, cuando las generemos para la revista, no podrán usar esta opción.
-%\end{nota}
-%
-%\section{Algunos apuntes}\label{sec:apuntes}
-%La compilación de documentos escritos con \LaTeX{} es un poco odisea, los que seáis usuarios habituales ya lo sabréis.
-%Si no se usan paquetes como \verb+minted+ o lo expuesto en la \cref{sec:diagramas:avanzado}, basta con ejecutar los comandos
-%\begin{verbatim}
-%pdflatex PlantillaTEMat
-%biber PlantillaTEMat
-%pdflatex PlantillaTEMat
-%pdflatex PlantillaTEMat
-%\end{verbatim}
-%desde la consola, sustituyendo el comando \verb+pdflatex+ por \verb+lualatex+ si es el caso y \verb+PlantillaTEMat+ por el nombre del archivo \TeX{} que se esté compilando.
-%
-%Si se usan paquetes que tienen que hacer llamadas externas (\verb+minted+ o imágenes TikZ o PSTricks externalizadas) es necesario compilar en modo \extranj{english}{shell escape}:
-%\begin{verbatim}
-%pdflatex -shell-escape PlantillaTEMat
-%biber PlantillaTEMat
-%pdflatex -shell-escape PlantillaTEMat
-%pdflatex -shell-escape PlantillaTEMat
-%\end{verbatim}
-%
-%Por supuesto, si habéis pasado la opción \verb+bibtex+ a la clase, la segunda orden deberéis sustituirla por una llamada a \verb+bibtex+.
-%
-%Una forma más fácil de compilar el documento es usar la herramienta \verb+latexmk+, que viene por defecto en las últimas versiones de \TeX~Live y de MiK\TeX{}, aunque en Windows es necesario instalar alguna implementación de Perl como ActivePerl\footnote{\url{http://www.activestate.com/activeperl/downloads}} para que funcione.
-%Con esto, y mediante el archivo \verb+latexmkrc+ que incluimos con la plantilla, basta con hacer
-%\begin{verbatim}
-%latexmk PlantillaTEMat
-%\end{verbatim}
-%y el propio \verb+latexmk+ se encarga de llamar todas las veces que haga falta a cada una de las herramientas, y la opción \verb+-shell-escape+ ya la tiene activada.
-%Se puede editar el archivo \verb+latexmk+ con un editor de texto plano y cambiar \verb+lualatex+ por \verb+pdflatex+ en caso de preferirlo.
-%
-%Todavía más fácil es usar Overleaf\footnote{\url{https://www.overleaf.com/}} o ShareLaTeX.\footnote{\url{https://www.sharelatex.com/}}
-%Basta con subir los archivos de la plantilla y \emph{voilà}, funciona.
-%En ambos casos os recomendamos que lo configuréis para que use LuaLaTeX, ya que es el formato con el que compilaremos nosotros.
-%Es cierto que podéis usar pdfLaTeX si lo preferís, la apariencia será prácticamente igual pero compilará más rápido (aunque en el caso de Overleaf hay que cambiarlo también en el archivo \verb+latexmkrc+).
-%
-%Si usáis un editor con botones para compilar, buscad la información para configurarlo.
-%Muchas veces permiten el uso de \verb+latexmk+, así que lo mejor sería hacer que así fuera.
-%Si vais a compilar la plantilla de ejemplo y usáis \verb+minted+ o alguno de los comandos para incluir imágenes TikZ o PSTricks, aseguraos de que el comando de compilación tenga activado el \extranj{english}{shell escape}.
-
-
-%\section{Usos avanzados}
-%
-%La clase \verb+TEMat-article+ incorpora opciones para usos más avanzados así como soporte para otros idiomas distintos al castellano de forma preliminar.
-%Más adelante actualizaremos esta documentación para explicar cómo se accede a estas opciones que, por otro lado, en general no estarán autorizadas para su uso en TEMat.
-
-
-%\section{Conclusiones}
-%
-%En función del artículo, puede ser adecuado incluir para terminar una sección de conclusiones, preguntas abiertas sobre el tema, formas de obtener más información...
-%Algo que permita cerrar el artículo.
-%
-%Esta plantilla no puede ser, ni mucho menos, una introducción al enorme mundo de \LaTeX.
-%Para aprender más, recomendamos buscar información por internet, donde hay gran cantidad de fuentes~\cite{wiki:latex, stackexchange, texample}.
-%
-%Si necesitáis algo o tenéis dudas sobre la revista, escribid a \email{publicaciones@anemat.com}.
-%
-%\nocite{*}
-%\printbibliography[heading=bibintoc]
+\nocite{*}
+\printbibliography[heading=bibintoc]
 
 \end{document}

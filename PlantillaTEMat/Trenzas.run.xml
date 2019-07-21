@@ -85,7 +85,7 @@
       <file>Trenzas-blx.bib</file>
     </requires>
     <requires type="editable">
-      <file>plantilla.bib</file>
+      <file>bibtrenzas.bib</file>
     </requires>
     <requires type="static">
       <file>biblatex.bst</file>
