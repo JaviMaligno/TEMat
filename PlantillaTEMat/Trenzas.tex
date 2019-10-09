@@ -20,6 +20,7 @@
 \usepackage{multirow}
 \usepackage{tikz-cd}
 \usepackage{braids}
+\usepackage{amssymb}  
 
 \usetikzlibrary{decorations.shapes}
 \usetikzlibrary{arrows}
@@ -31,9 +32,12 @@
 %%%%%%%%%%%%% Fin para usuarios de PSTricks y TikZ
 
 %Mis comandos
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\CC}{\mathbb{C}}
+\DeclareSymbolFontAlphabet{\amsmathbb}{AMSb}
+\newcommand{\Z}{\amsmathbb{Z}}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\N}{\amsmathbb{N}}
+\newcommand{\R}{\amsmathbb{R}}
+\newcommand{\CC}{\amsmathbb{C}}
 
 
 \providecommand{\gene}[1]{\langle{#1}\rangle}
@@ -79,7 +83,7 @@ El problema de la palabra es uno de los problemas fundamentales de la teoría co
 
 El nombre de este problema proviene de que podemos considerar el alfabeto $\Sigma=S\cup S^{-1}$, donde $S^{-1}$ representa el conjunto formado por los inversos de los elementos de $S$, y ver $G$ como un lenguaje sobre $\Sigma$, en el que dos palabras $a$ y $b$ representarán el mismo elemento si y solo si se puede transformar $a$ en $b$ mediante un número finito de pasos usando las reglas de reescritura proporcionadas por las relaciones de $R$ junto con la cancelación de inversos.  
 
-El propio Dehn describió algoritmos para resolver el problema de la palabra en grupos fundamentales de 2-variedades orientables cerradas con género mayor o igual que 2 \cite{Dehn12}. Sin embargo, en 1955 Pyotr Novikov encontró ejemplos de grupos finitamente presentados donde el problema de la palabra era indecidible \cite{Novikov}, es decir, que no se puede diseñar un algoritmo que lo resuelva. A pesar de esto, hay gran cantidad de grupos donde el problema de la palabra sí es resoluble. Ejemplos claros de ello son los grupos finitos y los grupos libres. Aquí estudiaremos los grupos de trenzas, que aparecen en numerosas ramas de las matemáticas como el álgebra, la topología y el análisis, y en los cuales el problema de la palabra es resoluble.
+El propio Dehn describió algoritmos para resolver el problema de la palabra en grupos fundamentales de 2-variedades orientables cerradas con género mayor o igual que 2 \cite{Dehn12}. Sin embargo, en 1955 Pyotr Novikov encontró ejemplos de grupos finitamente presentados donde el problema de la palabra era indecidible \cite{Novikov}, es decir, que no se puede diseñar un algoritmo que lo resuelva. A pesar de esto, hay gran cantidad de grupos donde el problema de la palabra sí es resoluble. Ejemplos claros de ello son los grupos finitos y los grupos libres. Aquí estudiaremos los grupos de trenzas, que aparecen en numerosas ramas de las matemáticas como el álgebra, la topología, la criptografía y el análisis, y en los cuales el problema de la palabra es resoluble.
 
 En este artículo empezamos con algunos preliminares sobre teoría de grupos y topología. A continuación introducimos los grupos de trenzas, destacando los subgrupos de trenzas puras y las presentaciones de dichos grupos. Por último describimos una estructura en los grupos de trenzas basada en unos monoides incluidos en los grupos. Esta estructura permite resolver el problema de la palabra.
 %Esta es la plantilla de artículos para la revista TEMat.
@@ -99,7 +103,7 @@ En este artículo empezamos con algunos preliminares sobre teoría de grupos y t
 
 \section{Preliminares}
 
-Con la intención de que este texto sea lo más accesible posible, dedicaremos esta sección a hablar sobre monoides, explicar qué son las presentaciones de grupos y a dar una pequeña introducción a la teoría de homotopía. El lector familiarizado con estos conceptos puede pasar directamente a la siguiente sección. 
+Dedicaremos esta sección a hablar sobre monoides, explicar qué son las presentaciones de grupos y a dar una pequeña introducción a la teoría de homotopía. 
 
 \subsection{Monoides}
 
@@ -117,7 +121,7 @@ Empezaremos hablando de monoides, puesto que dentro del grupo de trenzas hay un 
 \end{definicion}
 
 \begin{observacion}
-	Un monoide es análogo a un grupo, pero sin requerir la existencia de elementos inversos.
+	Un monoide es análogo a un grupo, pero sin requerir la existencia de elementos inversos, esto es, no exigimos que para todo $s\in S$ exista $s^{-1}\in S$ tal que $ss^{-1}=s^{-1}s=e$.
 \end{observacion}
 
 \begin{ejemplo}
@@ -144,39 +148,41 @@ Empezaremos hablando de monoides, puesto que dentro del grupo de trenzas hay un 
 	Una \textbf{presentación} de $H$ es un grupo libre $(L,i)$ y un subgrupo $N\trianglelefteq L$ tal que $L/N\cong H$. 
 \end{definicion}
 
-\begin{teorema}
+\begin{teorema}\cite[\S II.5]{Aluffi}
 	Dado un conjunto $X$, existe $(L,i)$ libre en $X$. %SI OCUPA MUCHO DEJARLO SIN PRUEBA Y REFERENCIARLO DEl ENLACE QUE TENGO ABAJO, SI LO DEJO REVISAR LA DEMO
 \end{teorema}
 \begin{demostracion}
-	Sea $X^{-1}$ un conjunto en biyección con $X$ mediante $x\mapsto x^{-1}$. Por abuso de notación a la inversa también la denotamos $x\mapsto x^{-1}$. Sea $(X\cup X^{-1})^*$ el monoide de palabras en $X\cup X^{-1}$ con la concatenación. Decimos que $w=y_1\cdots y_n\in (X\cup X^{-1})^*$ es \textbf{reducida} si $\forall\ 1\leq i\leq n-1$, $y_i\neq y_{i+1}^{-1}$. Si $w$ no es reducida, entonces $w'=y_1\cdots y_{i-1}y_{i+2}\cdots y_n$, se ha obtenido a través de una \textbf{reducción elemental} y escribimos $w\to w'$. 
+	Sea $X^{-1}$ un conjunto en biyección con $X$ mediante $x\mapsto x^{-1}$. Por abuso de notación a la inversa también la denotamos $x\mapsto x^{-1}$. Sea $(X\cup X^{-1})^*$ el monoide de palabras en $X\cup X^{-1}$ con la concatenación. Decimos que $w=y_1\cdots y_n\in (X\cup X^{-1})^*$ es \textbf{reducida} si $\forall\ 1\leq i\leq n-1$, tenemos que $y_i\neq y_{i+1}^{-1}$. Si $w$ no es reducida, entonces $w'=y_1\cdots y_{i-1}y_{i+2}\cdots y_n$, se ha obtenido a través de una \textbf{reducción elemental} y escribimos $w\to w'$. 
 	
-	Dos palabras son equivalentes si se puede obtener una a partir de la otra mediante reducciones elementales o mediante el proceso inverso de introducir un par de la forma $y_iy_i^{-1}$.
+	Dos palabras son equivalentes si se puede obtener una a partir de la otra mediante reducciones elementales o mediante el proceso inverso de introducir un par de la forma $y_iy_i^{-1}$. Es fácil comprobar que esta relación entre palabras es una relación de equivalencia.
 	\begin{figure}[h!]
 	\[
 	\begin{tikzcd}
-	zxx^{-}z\arrow[d] & zxx^{-1}y^{-1}y\arrow[l]\arrow[r] &zzy^{-1}y\arrow[lld]\\
+	zxx^{-1}z\arrow[d] & zxx^{-1}zy^{-1}y\arrow[l]\arrow[r] &zzy^{-1}y\arrow[lld]\\
 	zz 
 	\end{tikzcd}
 	\]
 	\caption{Palabras equivalentes.}
 		\end{figure}
 	
-	Entonces se tiene que $F(X)=(X\cup X^{-1})^*/\sim$, siendo $\sim$ la relación de equivalencia anterior, es un grupo libre en $X$ y existe una única palabra reducida en cada clase de equivalencia. La segunda afirmación es clara así que vamos a probar la primera. Consideramos $i:X\to F(X)$ la aplicación que envía cada elemento a su clase de equivalencia (los elementos de $X$ de hecho son palabras reducidas). Sea $G$ un grupo y $f:X\to G$ una función. Definimos $\varphi:F(X)\to G$ a partir de las palabras reducidas como $x_{i_1}^{\varepsilon_1}\cdots x_{i_n}^{\varepsilon_n}\mapsto f(x_{i_1})^{\varepsilon_1}\cdots f(x_{i_n})^{\varepsilon_n}$. Cualquier homomorfismo de $F(X)\to G$ que haga que el diagrama conmute debe cumplir esa definición luego es único. %Se puede ver con más detalle esta demostración en \url{https://www.math.unl.edu/~mbrittenham2/classwk/990s08/public/myasnikov.1.free.groups.pdf}
+	Entonces se tiene que $F(X)=(X\cup X^{-1})^*/\sim$, siendo $\sim$ la relación de equivalencia anterior, es un grupo libre en $X$ y existe una única palabra reducida en cada clase de equivalencia. Para la segunda afirmación, ver \cite[\S 1]{reduced}. Para la primera tenemos que probar dos cosas: que $F(X)$ es un grupo y que es libre. La propiedad asociativa y la existencia de elemento neutro se hereda del monoide $(X\cup X^{-1})^*$. Dado un elemento representado por una palabra reducida $w=y_1^{\varepsilon_1}\cdots y_n^{\varepsilon_n}$, es inmediato comprobar que el inverso está representado por la palabra $w^{-1}=y_n^{-\varepsilon_n}\cdots y_1^{\varepsilon_1}$. 
+	
+	Probamos ahora que $F(X)$ es libre. Consideramos $i:X\to F(X)$ la aplicación que envía cada elemento a su clase de equivalencia (los elementos de $X$ de hecho son palabras reducidas). Sea $G$ un grupo y $f:X\to G$ una función. Definimos $\varphi:F(X)\to G$ a partir de las palabras reducidas como $x_{i_1}^{\varepsilon_1}\cdots x_{i_n}^{\varepsilon_n}\mapsto f(x_{i_1})^{\varepsilon_1}\cdots f(x_{i_n})^{\varepsilon_n}$. Cualquier homomorfismo de $F(X)\to G$ que haga que el diagrama conmute debe cumplir esa definición luego es único. %Se puede ver con más detalle esta demostración en \url{https://www.math.unl.edu/~mbrittenham2/classwk/990s08/public/myasnikov.1.free.groups.pdf}
 	
 \end{demostracion}
 
-\begin{ejercicio}
-	El grupo libre en $X$ es único salvo isomorfismo, esto es, si $(L_1,i_1)$ y $(L_2,i_2)$ son libres en $X$, entonces existe un isomorfismo $L_1\cong L_2$.
-	\end{ejercicio}
+\begin{ejemplo}
+	El grupo libre en $X$ es único salvo isomorfismo, esto es, si $(L_1,i_1)$ y $(L_2,i_2)$ son libres en $X$, entonces $L_1\cong L_2$.
+	\end{ejemplo}
 
 Volvemos a las presentaciones. Dado $X$, el grupo libre en $X$ existe y es único salvo isomorfismo. Lo denotamos $\gene{X\mid\ }$. 
 
-Dado $R\subseteq G$, $\gene{R^G}$ denota el subgrupo generado por todos los $G$-conjugados de $R$, es decir, $$\bigcap_{N\trianglelefteq G, N\subseteq R} N.$$
-Dado un conjunto $X$ y $R\subseteq\gene{X\mid\ }$, denotamos por $\gene{X\mid R}$ al grupo $\gene{X\mid\ }/\gene{R^{\gene{X\mid\ }}}$. Por lo visto anteriormente, para todo grupo $G$ existe un conjunto $X$ y $R\subseteq\gene{X\mid\ }$ tal que $\gene{X\mid R}\cong G$. Veamos algunos ejemplos. 
+Sea $G$ un grupo. Dado $R\subseteq G$, $\gene{R^G}$ denota el subgrupo generado por todos los $G$-conjugados de $R$, que coincide con el menor subgrupo normal que contiene a $R$: $$\bigcap_{N\trianglelefteq G, R\subseteq N} N.$$
+Dado un conjunto $X$ y $R\subseteq\gene{X\mid\ }$, denotamos por $\gene{X\mid R}$ al grupo $\gene{X\mid\ }/\gene{R^{\gene{X\mid\ }}}$. Por lo visto anteriormente, para todo grupo $G$ existe un conjunto $X$ y $R\subseteq\gene{X\mid\ }$ tal que $\gene{X\mid R}\cong G$.
 
 \begin{ejemplo}\
 	\begin{enumerate}[label=\roman*]
-		\item Para $n\geq 1$, consideremos la presentación $\gene{x\mid x^n}$. Este es el grupo generado por un elemento de orden $n$, por lo que este grupo es justamente el grupo cíclico $\Z/n\Z$. A menudo, las relaciones se escriben como ecuaciones, de modo que esta presentación podría haberse escrito como $\gene{x\mid x^n=1}$. 
+		\item Para $n\geq 1$, consideremos la presentación $\gene{x\mid x^n}$. Este es el grupo generado por un elemento de orden $n$, por lo que este grupo es isomorfo al grupo cíclico aditivo $\Z/n\Z$. A menudo, las relaciones se escriben como ecuaciones, de modo que esta presentación podría haberse escrito como $\gene{x\mid x^n=1}$. 
 	\item  La presentación del grupo libre abeliano de rango $n$, $\Z^n$, está dada por $\gene{x_1,\dots, x_n\mid [x_i,x_j]=1}$, donde $[x_i,x_j]=x_ix_jx_i^{-1}x_j^{-1}$ es el conmutador de los elementos $x_i$ y $x_j$. Es decir, la presentación expresa que el grupo está generado por $n$ elementos que conmutan entre sí y ninguna relación más, por lo que efectivamente es el grupo libre abeliano de rango $n$. Escribiendo las relaciones como ecuaciones podemos también despejar y escribir la presentación anterior como $\gene{x_1,\dots, x_n\mid x_ix_j=x_jx_i}$. 
 	\end{enumerate}
 	\end{ejemplo}
@@ -194,9 +200,7 @@ Vamos a concentrarnos a partir de ahora en presentaciones \textbf{finitas}, es d
 	Si $\gene{X\mid R}\cong\gene{X\mid R'}$ son presentaciones finitas, entonces se puede obtener una presentación de la otra mediante una sucesión finita de transformaciones de Tietze.
 \end{teorema}
 
-Por tanto, cualesquiera presentaciones de un grupo son equivalentes, y por tanto tiene sentido hablar de \emph{la} presentación de un grupo. 
-
-Volviendo al problema de la palabra, sea $G=\gene{X\mid R}$ finita y $w\in (X\cup X^{-1})^*$. Entonces $w=_G 1$ si y solo si $w\in \gene{R^{\gene{X\mid\ }}}$ si y solo si $w=\displaystyle\prod_{i=1}^M p_ir_i^{\varepsilon_i}p_i^{-1}$ en $\gene{X\mid\ }$, donde $r_i\in R, p_i\in\gene{X\mid\ }, \varepsilon_i=\pm 1$. 
+Volviendo al problema de la palabra, sea $\gene{X\mid R}$ una presentación finita de un grupo $G$ y $w\in (X\cup X^{-1})^*$. Entonces $w=_G 1$ si y solo si $w\in \gene{R^{\gene{X\mid\ }}}$ si y solo si $w=\displaystyle\prod_{i=1}^M p_ir_i^{\varepsilon_i}p_i^{-1}$ en $\gene{X\mid\ }$ para algún $M\in\amsmathbb{N}$, algunos $r_i\in R$ y algunos $p_i\in\gene{X\mid\ }$, con $i\in\{1,\dots, M\}$ y $\varepsilon_i=\pm 1$. 
 
 
 \subsection{Relación entre monoides y grupos}
@@ -204,7 +208,7 @@ Volviendo al problema de la palabra, sea $G=\gene{X\mid R}$ finita y $w\in (X\cu
 De forma análoga a como se hace para grupos, podemos considerar los generadores de un monoide y una presentación de un monoide mediante generadores y relaciones. También se definen de forma análoga los morfismos entre monoides. De hecho, la definición de monoide libre es análoga a la de grupos, siendo el monoide libre en un conjunto $X$ el lenguaje generado por este conjunto.
 
 \begin{definicion}
-	Dado un monoide $S$ con presentación $\langle M\mid R\rangle$, su \textbf{grupo de fracciones} $G(S)$ es el grupo generado por la misma presentación.
+	Dado un monoide $S$ con presentación $\langle M\mid R\rangle$, su \textbf{grupo de fracciones} $G(S)$ es el grupo con presentación $\langle M\mid R\rangle$.
 \end{definicion}
 
 Existe una aplicación natural de un monoide en su grupo de fracciones. Sin embargo, esta aplicación no siempre es inyectiva, pues la existencia de inverso en el grupo puede hacer que dos elementos distintos del monoide representen el mismo elemento del grupo de fracciones. Por ejemplo, si consideramos la presentación $\langle a,b,c\mid ab=cb\rangle$, los elementos $a$ y $c$ son distintos en el monoide; sin embargo, en el grupo son el mismo, pues multiplicando a la derecha por $b^{-1}$ en la relación obtenemos $a=c$. De aquí que consideremos la siguiende definición.
@@ -222,7 +226,7 @@ Existe una aplicación natural de un monoide en su grupo de fracciones. Sin emba
 \end{definicion}
 
 \begin{prop}\cite[Teorema 1.23]{Clifford}
-	Si un monoide satisface las condiciones de Ore, entonces se inyecta en su grupo de fracciones .
+	Si un monoide satisface las condiciones de Ore, entonces se inyecta en su grupo de fracciones.
 \end{prop}
 
 \subsection{Teoría de homotopía}
@@ -236,7 +240,8 @@ Para definir algunos conceptos necesitaremos ciertas nociones básicas de teorí
 
 \begin{lema} Ser homotópicas es una relación de equivalencia (también serlo relativamente).
 \end{lema}
-\begin{demostracion}\
+\begin{demostracion}
+vamos a demonstrar que la relacion de homotopia es reflexiva, simétrica y transitiva.
 	\begin{itemize}
 		\item Reflexiva: $f\simeq f$ mediante $H(x,t)=f(x)$.
 		\item Simétrica: si $f\simeq g$ mediante $H$, entonces $g\simeq f$ mediante $\widetilde{H}(x,t)=H(x,1-t)$. Se cumplen
@@ -244,7 +249,7 @@ Para definir algunos conceptos necesitaremos ciertas nociones básicas de teorí
 		\widetilde{H}(x,0)=H(x,1)=g(x),\\
 		\widetilde{H}(x,1)=H(x,0)=f(x).
 		\end{gather*}
-		Se deja como ejercicio probar que $\widetilde{H}$ es continua.
+		Es inmediato probar que $\widetilde{H}$ es continua.
 		\item Transitiva: sea $f\simeq g$ mediante $F$ y $g\simeq h$ mediante $G$. Entonces, $f\simeq h$ mediante
 		\begin{equation*}
 		H(x,t)=\left\{\begin{array}{ccc}
@@ -255,14 +260,14 @@ Para definir algunos conceptos necesitaremos ciertas nociones básicas de teorí
 		H(x,1)=G(x,1)=h(x).
 		\end{array}\right.
 		\end{equation*}
-		Está bien definida en $t=\frac{1}{2}$ pues $F(x,1)=g(x)=G(x,0)$. Se deja como ejercicio probar la continuidad de $H$ y adaptar la demostración al caso relativo.
+		Está bien definida en $t=\frac{1}{2}$ pues $F(x,1)=g(x)=G(x,0)$. Es inmediato probar la continuidad de $H$ y adaptar la demostración al caso relativo.
 	\end{itemize}
 \end{demostracion}
 
 \subsection{Caminos}
 
 \begin{definicion}
-Dado un espacio topológico $X$, un \textbf{camino} entre $x$ e $y$ pertenecientes a $X$ es una aplicación continua $\alpha:[0,1]\to X$ tal que $\alpha(0)=x$ y $\alpha(1)=y$. %Se dice que $\alpha$ es un \textbf{lazo} si $\alpha(0)=\alpha(1)$.
+Dado un espacio topológico $X$, un \textbf{camino} entre $x$ e $y$ pertenecientes a $X$ es una aplicación continua $\alpha:I\to X$ tal que $\alpha(0)=x$ y $\alpha(1)=y$, siendo $I=[0,1]$. %Se dice que $\alpha$ es un \textbf{lazo} si $\alpha(0)=\alpha(1)$.
 \end{definicion}
 
 \begin{definicion} Dados $\alpha,\beta:I\to X$ dos caminos con $\alpha(0)=x,\alpha(1)=\beta(0)=y,\beta(1)=z$, se llama \textbf{concatenación} de $\alpha$ y $\beta$ al camino definido como
@@ -294,7 +299,7 @@ Dado un espacio topológico $X$, un \textbf{camino} entre $x$ e $y$ pertenecient
 	\caption{La concatenación $\alpha\beta$ es el camino resultante desde $x$ hasta $z$.}
 \end{figure}
 
-\begin{nota} Si $\alpha$ y $\beta$ son equivalentes escribimos $\alpha\sim\beta$ en lugar de $\alpha\simeq\beta$ relativamente a $\{0,1\}$.
+\begin{nota} Si $\alpha$ y $\beta$ camino homotópicos relativamente a $\{0,1\}$, decimos que son \textbf{equivalentes} y escribimos $\alpha\sim\beta$ en lugar de $\alpha\simeq\beta$ relativamente a $\{0,1\}$.
 \end{nota}
 
 \begin{lema} La concatenación es compatible con la equivalencia de caminos, esto es, si $\alpha\sim\alpha'$ y $\beta\sim\beta'$, entonces $\alpha\beta\sim\alpha'\beta'$. 
@@ -358,17 +363,17 @@ Dado un espacio topológico $X$, un \textbf{camino} entre $x$ e $y$ pertenecient
 	\begin{enumerate}
 		\item Por definición tenemos por un lado $$\alpha(\beta\gamma)(t)=\left\{\begin{array}{lc}
 		\alpha(2t) & 0\leq t\leq\frac{1}{2},\\
-		\beta\gamma(2t-1) & \frac{1}{2}\leq t\leq 1,
+		\beta\gamma(2t-1) & \frac{1}{2}\leq t\leq 1.
 		\end{array}\right.=\left\{\begin{array}{lc}
 		\alpha(2t) & 0\leq t\leq\frac{1}{2},\\
 		\beta(4t-2) & \frac{1}{2}\leq t\leq\frac{3}{4},\\
-		\gamma(4t-3) & \frac{3}{4}\leq t\leq 1,
+		\gamma(4t-3) & \frac{3}{4}\leq t\leq 1.
 		\end{array}\right.$$
-		y por otro 
+		Por otro lado,
 		
 		$$(\alpha\beta)\gamma(t)=\left\{\begin{array}{lc}
 		(\alpha\beta)(2t) & 0\leq t\leq\frac{1}{2,}\\
-		\gamma(2t-1) & \frac{1}{2}\leq t\leq 1,
+		\gamma(2t-1) & \frac{1}{2}\leq t\leq 1.
 		\end{array}\right.=\left\{\begin{array}{lc}
 		\alpha(4t) & 0\leq t\leq\frac{1}{4},\\
 		\beta(4t-1) & \frac{1}{4}\leq t\leq\frac{1}{2},\\
@@ -403,9 +408,9 @@ Dado un espacio topológico $X$, un \textbf{camino} entre $x$ e $y$ pertenecient
 		Sea por lo tanto
 		\[
 		F(t,s)=\left\{\begin{array}{lcc}
-		\alpha\left(\frac{4t}{s+1}\right) & si & 0\leq t\leq\frac{s+1}{4},\\
-		\beta\left(4t-(s+1)\right) & si & \frac{s+1}{4}\leq t\leq\frac{s+2}{4},\\
-		\gamma\left(\frac{4t-s-2}{2-s}\right) & si & \frac{s+2}{4}\leq t\leq 1.
+		\alpha\left(\frac{4t}{s+1}\right)  & 0\leq t\leq\frac{s+1}{4},\\
+		\beta\left(4t-(s+1)\right) &  \frac{s+1}{4}\leq t\leq\frac{s+2}{4},\\
+		\gamma\left(\frac{4t-s-2}{2-s}\right) & \frac{s+2}{4}\leq t\leq 1.
 		\end{array}\right.
 		\]
 		Se tiene que $F$ es una homotopía relativa a $\{0,1\}$ entre $F(t,0)=(\alpha\beta)\gamma(t)$ y $F(t,1)=\alpha(\beta\gamma)(t)$.
@@ -413,8 +418,8 @@ Dado un espacio topológico $X$, un \textbf{camino} entre $x$ e $y$ pertenecient
 		\item Para probar $c_x\alpha\sim\alpha$ definimos la homotopía
 		\[
 		F(t,s)=\left\{\begin{array}{lcc}
-		x & si & 0\leq t\leq\frac{1-s}{2}\\
-		\alpha\left(\frac{2t+s-1}{s+1}\right) & si & \frac{1-s}{2}\leq t\leq 1
+		x &  0\leq t\leq\frac{1-s}{2},\\
+		\alpha\left(\frac{2t+s-1}{s+1}\right)  & \frac{1-s}{2}\leq t\leq 1.
 		\end{array}\right.
 		\]
 %		\definecolor{zzttqq}{rgb}{0.6,0.2,0.}
@@ -466,7 +471,7 @@ Dado un espacio topológico $X$, un \textbf{camino} entre $x$ e $y$ pertenecient
 %		
 		
 		
-		define una homotopía relativa a $\{0,1\}$ entre $\alpha\overline{\alpha}$ y $c_x$. Análogamente se encuentra una homotopía relativa a $\{0,1\}$ entre $\overline{\alpha}\alpha$ y $c_y$.
+		define una homotopía relativa a $\{0,1\}$ entre $\alpha\overline{\alpha}$ y $c_x$. Análogamente se puede encontrar una homotopía relativa a $\{0,1\}$ entre $\overline{\alpha}\alpha$ y $c_y$.
 	\end{enumerate}
 \end{demostracion}
 \section{Grupos de trenzas}
@@ -530,7 +535,7 @@ Normalmente, se representan las trenzas como su proyección en $\R\times[0,1]$ (
 	Se definen los \textbf{generadores estándar} o \textbf{generadores de Artin} como las trenzas $\sigma_i$ con $1\leq i\leq n-1$ indicadas en la \cref{artingen}.
 	\begin{figure}[h!]
 		\centering
-		\resizebox{15cm}{3.cm}{%
+		%\resizebox{15cm}{3.cm}{%
 		\begin{tikzpicture}
 		\fill[black] ( 6.7 , -0.5 ) circle ( 1 pt ) ;
 		\fill[black] ( 7 , -0.5 ) circle ( 1 pt ) ;
@@ -547,12 +552,11 @@ Normalmente, se representan las trenzas como su proyección en $\R\times[0,1]$ (
 		\node[ at=(braid-5-s),  label=north : $i+1$ ] {} ;
 		\node[ at=(braid-8-s),  label=north :  $n$ ] {} ;
 		\draw (4.5,-2) node[anchor=south] {$\sigma_i$};
-		\end{tikzpicture}		
-		\begin{tikzpicture}
+		\end{tikzpicture}	
+	\begin{tikzpicture}
 		\fill[black] ( 6.7 , -0.5 ) circle ( 1 pt ) ;
 		\fill[black] ( 7 , -0.5 ) circle ( 1 pt ) ;
 		\fill[black] ( 7.3 , -0.5 ) circle ( 1 pt ) ;
-		
 		\fill[black] ( 1.7 , -0.5 ) circle ( 1 pt ) ;
 		\fill[black] ( 2 , -0.5 ) circle ( 1 pt ) ;
 		\fill[black] ( 2.3 , -0.5 ) circle ( 1 pt ) ;
@@ -564,7 +568,7 @@ Normalmente, se representan las trenzas como su proyección en $\R\times[0,1]$ (
 		\node[ at=(braid-5-s),  label=north : $i+1$ ] {} ;
 		\node[ at=(braid-8-s),  label=north :  $n$ ] {} ;
 		\draw (4.5,-2) node[anchor=south] {$\sigma_i^{-1}$};
-		\end{tikzpicture}}
+		\end{tikzpicture}%}
 		\caption{Generador de Artin y su inverso.}\label{artingen}
 	\end{figure}
 \end{defi}\
@@ -575,9 +579,9 @@ A partir de las observaciones anteriores, es claro que cualquier trenza se puede
 	\centering
 	\begin{tikzpicture}
 	\draw [line width=1.5pt, dash pattern=on 4pt off 4pt] (0,0.9)-- (0,4.2);
-	\draw (-0.7,0.7) node[anchor=north west] {$\mathbb{R}\times\{0\}$};
+	\draw (-0.7,0.7) node[anchor=north west] {$\amsmathbb{R}\times\{0\}$};
 	\draw [line width=1.5pt, dash pattern=on 4pt off 4pt] (9.1,0.9)-- (9.1,4.2);
-	\draw (8.4,0.7) node[anchor=north west] {$\mathbb{R}\times\{1\}$};
+	\draw (8.4,0.7) node[anchor=north west] {$\amsmathbb{R}\times\{1\}$};
 	\braid[rotate=90, number of strands=4, %lower bound
 	border height=2pt,style strands={1}{line width=2pt},style strands={2}{line width=2pt},style strands={3}{line width=2pt},style strands={4}{line width=2pt}, style floors={1}{dashed}] (braid) at (1,0)%optional, it's a name
 	a_1^{-1}a_3^{-1}a_2^{-1}a_1^{-1}a_3^{-1}a_2^{-1}a_3a_2^{-1}a_1^{-1};
@@ -643,9 +647,9 @@ Una de las características más importantes del conjunto de clases de homotopí
 Denotemos $B_n$ al conjunto de clases de homotopía de trenzas de $n$ cuerdas y $PB_n$ al conjunto de clases de homotopía de trenzas puras de $n$ cuerdas. Es evidente que la multiplicación anterior induce una operación en $B_n$ (y por tanto en $PB_n)$; es más, se tiene el siguiente resultado.
 
 \begin{proposicion}
-	El conjunto $B_n$ dotado de esta operación tiene estructura de grupo, y se le llama \textbf{grupo de trenzas de $n$ cuerdas}. El resultado también es cierto para $PB_n$, cuyo nombre es \textbf{grupo de trenzas puras de $n$ cuerdas}. 
+	El conjunto $B_n$ dotado de esta operación tiene estructura de grupo. El resultado también es cierto para $PB_n$. 
 \end{proposicion}
-
+Al grupo $B_n$ se le llama \textbf{grupo de trenzas de $n$ cuerdas} y a $PB_n$ se le llama \textbf{grupo de trenzas puras de $n$ cuerdas}. 
 \begin{demostracion}
 	Sean $\alpha$ y $\beta$ dos trenzas con representantes $a=(a_1,\dots, a_n)$ y $b=(b_1,\dots, b_n)$ respectivamente. En primer lugar, veamos que la operación está bien definida, es decir, que $a\cdot b$ es una trenza geométrica, y por tanto podemos definir $\alpha\beta=[a\cdot b]$. Sea $\tau=\tau(a)$ la permutación inducida por $a$. Como $a_kb_{\tau(k)}(0)=a_k(0)=(P_k,0)$ para todo $1\leq k\leq n$, se cumple la primera propiedad de la \cref{geo}. Para la segunda, basta observar que la nueva permutación es $\tau(a\cdot b)=\tau(b)\circ \tau(a)$. En particular, si $a$ y $b$ son puras, entonces la permutación inducida por el producto también es la identidad, por lo que el producto es una trenza pura. Por último, si $t\in[0,1/2]$, entonces $a_k\beta_{\tau(k)}=a_k(2t)$ y si $t\in [1/2,1]$, $\alpha_k\beta_{\tau(k)}=\beta_{\tau(k)}(2t-1)$ para todo $1\leq k\leq n$, por lo que se tiene claramente la tercera propiedad. 
 	
@@ -663,6 +667,8 @@ Denotemos $B_n$ al conjunto de clases de homotopía de trenzas de $n$ cuerdas y 
 	Análogamente se prueba $\alpha^{-1}\alpha=[Id]$. 
 	
 \end{demostracion}
+
+
 
 
 
@@ -699,7 +705,7 @@ B_n=\left\langle\begin{array}{c| c c}
 \end{equation}
 La prueba de la completitud de esta presentación puede encontrarse en \cite{Magnus}. 
 
-Vamos a dar también la presentación del grupo de trenzas puras, en concreto la dada por J. S. Birman en \cite{Birman} (ver también \cite{polynomial}), pues nos será más útil para probar ciertos resultados. La presentación original dada por Artin se puede encontrar en \cite{Artin}. Así pues, definimos los \textbf{generadores de Birman}
+Vamos a dar también la presentación del grupo de trenzas puras, en concreto la dada por Birman en \cite{Birman} (ver también \cite{polynomial}), pues nos será más útil para probar ciertos resultados. La presentación original dada por Artin se puede encontrar en \cite{Artin}. Así pues, definimos los \textbf{generadores de Birman}
 \begin{equation}\label{birman}
 A_{ij}=\sigma_{j-1}\dots\sigma_{i+1}\sigma_i^2\sigma_{i+1}^{-1}\dots\sigma_{j-1}^{-1}\ (1\leq i<j\leq n).
 \end{equation}
@@ -769,7 +775,7 @@ Antes de continuar debemos probar que la relación que hemos definido es realmen
 	La relación $\preccurlyeq$ es una relación de orden.
 \end{lema}
 \begin{demostracion}
-	Dada $x\in B_n^+$ se tiene que $x\preccurlyeq x\cdot 1=x$, por lo que se cumple la propiedad reflexiva. Si $x,y\in B_n^+$ con $x \preccurlyeq y $ e $y \preccurlyeq x$, entonces tenemos que $y=xa$ y $x=yb$ para algunos $a,b\in B_n^+$, así que $y=yba$. Como en el monoide de trenzas positivas las relaciones son homogéneas, tenemos necesariamente que $a=b=1$, por lo que $x=y$, cumpliéndose la propiedad antisimétrica. Por último, supongamos que $x\preccurlyeq y\preccurlyeq z$ para ciertas $x,y,z\in B_n^+$. Entonces $y=xa$ y $z=yb$ para $a,b\in B_n^+$. Sustituyendo, $z=xab$, por lo que $x\preccurlyeq z$, lo que prueba la propiedad transitiva. 
+	Dada $x\in B_n^+$ se tiene que $x\preccurlyeq x\cdot 1=x$, por lo que se cumple la propiedad reflexiva. Si $x,y\in B_n^+$ con $x \preccurlyeq y $ e $y \preccurlyeq x$, entonces tenemos que $y=xa$ y $x=yb$ para algunos $a,b\in B_n^+$, así que $y=yba$. Como en el monoide de trenzas positivas las relaciones son homogéneas, la longitud de las palabras dentro de una clase de equivalencia es constante , pero $long(yab)=long(y)+long(a)+long(b)$, por lo que tenemos necesariamente que $a=b=1$, de donde $x=y$, cumpliéndose la propiedad antisimétrica. Por último, supongamos que $x\preccurlyeq y\preccurlyeq z$ para ciertas $x,y,z\in B_n^+$. Entonces $y=xa$ y $z=yb$ para $a,b\in B_n^+$. Sustituyendo, $z=xab$, por lo que $x\preccurlyeq z$, lo que prueba la propiedad transitiva. 
 \end{demostracion}
 Nótese que $\preccurlyeq$ es invariante por multiplicación a izquierda, esto es, $a\preccurlyeq b$ implica $xa\preccurlyeq xb$ para todo $a,b,x\in B_n^+$. %vale el mismo c
 
@@ -779,7 +785,7 @@ Dado tal orden parcial, uno podría preguntarse si existe un único máximo com�
 	Análogamente podríamos definir el orden parcial de \textbf{sufijos}, $\succcurlyeq$, invariante por multiplicación a derecha. Nótese que este orden no es equivalente al de prefijos, puesto que $b\succcurlyeq a$ no implica en general $a\preccurlyeq b$ ni recíprocamente. Por ejemplo, $\sigma_1\preccurlyeq \sigma_1\sigma_2$, pero claramente $\sigma_1\sigma_2\not\succcurlyeq \sigma_1$.
 \end{nota}
 
-El punto clave en el trabajo de Garside fue demostrar mediante métodos elementales que $\sigma_i$ y $\sigma_j$ tienen mínimo común múltiplo en $B_n^+$. En concreto:
+
 \begin{proposicion}\cite[Teorema 1.2]{Garside}
 	El mínimo común múltiplo de los generadores $\sigma_i$ y $\sigma_j$ viene dado por
 	$$\sigma_i\lor\sigma_j=\begin{cases}
@@ -789,9 +795,9 @@ El punto clave en el trabajo de Garside fue demostrar mediante métodos elementa
 \end{proposicion}
 %1.2 GARSIDE, la unicidad se ve fácil por la longitud
 
-Garside prueba al mismo tiempo que $B_n^+$ es cancelativo, es decir, $xay=xby$ implica $a=b$ para todo $a,b,x,y\in B_n^+$.
+En la prueba original se prueba también que $B_n^+$ es cancelativo, es decir, $xay=xby$ implica $a=b$ para todo $a,b,x,y\in B_n^+$. Este resultado permite probar que todo par de elementos tiene de $B_n^+$ tiene un único mínimo común múltiplo y un único máximo común divisor, tal como se hace en \cite{Dehornoy}. 
 
-Como las relaciones de (\ref{presentacion}) son homogéneas, palabras equivalentes en $B_n^+$ tienen la misma longitud, por lo que la longitud de una trenza positiva se define como la longitud de cualquier palabra que la represente. Aunque Garside no lo menciona explícitamente, un argumento inductivo en esta longitud utilizando la cancelatividad permite probar a partir del resultado anterior que todo par de elementos tiene de $B_n^+$ tiene un único mínimo común múltiplo y un único máximo común divisor, tal como se prueba en \cite{Dehornoy}. 
+Como las relaciones de (\ref{presentacion}) son homogéneas, palabras equivalentes en $B_n^+$ tienen la misma longitud, por lo que la longitud de una trenza positiva se define como la longitud de cualquier palabra que la represente.  
 
 %relaciones homogéneas= LA SUMA DE LOS EXPONENTES A UN LADO Y A OTRO DE LA ECUACIÓN ES LA MISMA
 %lo de dehornoy lo tengo en el mismo papel donde me explica el 1.2 de Garside y lo de que los sigma_i son sufijos de Delta. Lo del mcm es lo de las flechitas y el mcd es los bloques
@@ -821,8 +827,23 @@ Garside después estudia el siguiente elemento especial.
 	\caption{La trenza fundamental $\Delta_5$.}
 \end{figure}
 
+\begin{lema}\label{anterior}
+Se tiene para $k>i\geq 1$ que $\sigma_i(\sigma_k\cdots\sigma_1)=(\sigma_k\cdots\sigma_1)\sigma_{i+1}$.
+\end{lema}
+\begin{demostracion}
+Usando las relaciones del monoide de trenzas positivas
+		\begin{align*}
+		\sigma_i(\sigma_k\cdots\sigma_1)&=\sigma_i(\sigma_k\cdots\sigma_{i+2})(\sigma_{i+1}\sigma_i)(\sigma_{i-1}\cdots\sigma_1)\\
+		&=(\sigma_k\cdots\sigma_{i+2})(\sigma_i\sigma_{i+1}\sigma_i)(\sigma_{i-1}\cdots\sigma_1)\\
+		&=(\sigma_k\cdots\sigma_{i+2})(\sigma_{i+1}\sigma_i\sigma_{i+1})(\sigma_{i-1}\cdots\sigma_1)\\
+		&=(\sigma_k\cdots\sigma_{i+2})(\sigma_{i+1}\sigma_i)(\sigma_{i-1}\cdots\sigma_1)\sigma_{i+i}\\
+		&=(\sigma_k\cdots\sigma_1)\sigma_{i+1}.
+		\end{align*}
+\end{demostracion}
+
 
 A partir de este resultado podemos deducir las siguientes propiedades sobre $\Delta$.
+
 
 \begin{proposicion}\label{sufijos} Se cumplen:
 	\begin{enumerate}
@@ -835,19 +856,12 @@ A partir de este resultado podemos deducir las siguientes propiedades sobre $\De
 
 \begin{demostracion}\
 	\begin{enumerate}
-		\item En primer lugar, se tiene para $k>i\geq 1$ que $\sigma_i(\sigma_k\cdots\sigma_1)=(\sigma_k\cdots\sigma_1)\sigma_{i+1}$. En efecto, usando las relaciones del monoide de trenzas positivas
-		\begin{align*}
-		\sigma_i(\sigma_k\cdots\sigma_1)&=\sigma_i(\sigma_k\cdots\sigma_{i+2})(\sigma_{i+1}\sigma_i)(\sigma_{i-1}\cdots\sigma_1)\\
-		&=(\sigma_k\cdots\sigma_{i+2})(\sigma_i\sigma_{i+1}\sigma_i)(\sigma_{i-1}\cdots\sigma_1)\\
-		&=(\sigma_k\cdots\sigma_{i+2})(\sigma_{i+1}\sigma_i\sigma_{i+1})(\sigma_{i-1}\cdots\sigma_1)\\
-		&=(\sigma_k\cdots\sigma_{i+2})(\sigma_{i+1}\sigma_i)(\sigma_{i-1}\cdots\sigma_1)\sigma_{i+i}\\
-		&=(\sigma_k\cdots\sigma_1)\sigma_{i+1}.
-		\end{align*}
+		\item En primer lugar, por el \cref{anterior} se tiene para $k>i\geq 1$ que $\sigma_i(\sigma_k\cdots\sigma_1)=(\sigma_k\cdots\sigma_1)\sigma_{i+1}$. 
 		Así pues, para expresar $\sigma_i$ como sufijo de $\Delta$ hacemos los siguiente. Si $i=1$, entonces por la definición de $\Delta$ ya tenemos que es un sufijo. Si $1<i\leq n-1$, partimos de
 		\[
 		\Delta=\sigma_1(\sigma_2\sigma_1)\cdots(\sigma_{n-i}\dots\underline{\sigma_1})\cdots(\sigma_{n-1}\dots\sigma_1).
 		\]
-		Procedemos a desplazar a la derecha el $\sigma_1$ subrayado tal como hemos hecho anteriormente. En cada paso irá aumentando el índice en una unidad. Por tanto, como hay $n-(n-i-1)=i-1$ bloques que se dejan atrás, obtenemos $\sigma_{1+i-1}=\sigma_i$, es decir,
+		Procedemos a desplazar a la derecha el $\sigma_1$ subrayado tal como hemos hecho anteriormente. En cada paso irá aumentando el índice en una unidad. Por tanto, como hay $n-(n-i-1)=i+1$ bloques que se dejan atrás, obtenemos $\sigma_{1+i-1}=\sigma_i$, es decir,
 		\[
 		\Delta=\sigma_1(\sigma_2\sigma_1)\cdots(\sigma_{n-i}\dots\underline{\sigma_1})(\sigma_{n-i+1}\cdots\sigma_1)\cdots(\sigma_{n-1}\dots\sigma_1)=
 		\]
@@ -899,13 +913,13 @@ Esta forma normal permite resolver el problema de la palabra, ya que se pueden e
 
 El-rifai y Morton \cite{EM} lo mejoraron definiendo la \textbf{forma normal a la izquierda} de una trenza. Basta tomar la descomposición $\Delta^pA$ y después definir %izquierda porque se van pasando elementos a la izquierda
 \begin{align*}
-&a_1=A\land\Delta\\
+&a_1=A\land\Delta,\\
 &a_i=(a_{i-1}^{-1}\cdots a_1^{-1}A)\land\Delta,\ \forall\ i>1.
 \end{align*}
 Nótese que existe un $r\geq 0$ tal que $a_i=1$ para todo $i>r$, ya que la longitud de $a_{i-1}^{-1}\cdots a_1^{-1}A$ es estrictamente decreciente. De esta forma, toda trenza puede ser escrita de manera única como:
 %la longitud decrece porque estás cancelando prefijos de A, luego cada vez lo haces más corto
 $$\Delta^p a_1\cdots a_r,$$
-donde los $a_i$ son los definidos anteriormente, los cuales por definición son un prefijos propios de $\Delta$, es decir, $1\prec a_i\prec\Delta$, y además se puede demostrar que $(a_ia_{i+1})\land\Delta=a_i$ \cite{Thurston} para todo $i=1,\dots, r-1$. Esta es la anteriormente mencionada forma normal a la izquierda de la trenza. Los prefijos positivos de $\Delta$ son llamados \textbf{trenzas simples} o \textbf{trenzas de permutación}. El nombre no es casual, ya que como prueba Thurston \cite{Thurston}, estas trenzas representan en cierto modo a las permutaciones que inducen. Estas trenzas se caracterizan por ser aquellas en las que los generadores $\sigma_i$ aparecen con exponente no superior a 1 en todas sus expresiones en términos de los generadores de Artin. Por tanto, la forma normal a la izquierda de una trenza es una descomposición única como producto de una potencia de $\Delta$ y una sucesión de elementos simples propios. Thurston \cite{Thurston} mostró que esta forma normal puede ser calculada en tiempo $O(l^2n\log(n))$ para una palabra de $l$ letras en $B_n$. 
+donde los $a_i$ son los definidos anteriormente, los cuales por definición son un prefijos propios de $\Delta$, es decir, $1\prec a_i\prec\Delta$, y además se puede demostrar que $(a_ia_{i+1})\land\Delta=a_i$ para todo $i=1,\dots, r-1$ \cite{Thurston}. Esta es la anteriormente mencionada forma normal a la izquierda de la trenza. Los prefijos positivos de $\Delta$ son llamados \textbf{trenzas simples} o \textbf{trenzas de permutación}. El nombre no es casual, ya que como prueba Thurston \cite{Thurston}, estas trenzas representan en cierto modo a las permutaciones que inducen. Estas trenzas se caracterizan por ser aquellas en las que los generadores $\sigma_i$ aparecen con exponente no superior a 1 en todas sus expresiones en términos de los generadores de Artin. Por tanto, la forma normal a la izquierda de una trenza es una descomposición única como producto de una potencia de $\Delta$ y una sucesión de elementos simples propios. Thurston \cite{Thurston} mostró que esta forma normal puede ser calculada en tiempo $O(l^2n\log(n))$ para una palabra de $l$ letras en $B_n$. 
 
 %prefijo propio de Delta porque Delta no era prefijo de A y se está haciendo el meet
 
@@ -943,6 +957,8 @@ Alternativamente, podríamos empezar con una descomposición $w=\Delta^qA$ con $
 	\end{align*}
 	Ahora tenemos la situación inversa: aparentemente podríamos añadir $\sigma_2$ al primer bloque, pero utilizando la misma relación de la presentación del grupo de trenzas que antes, nos aparecería $\sigma_2$ dos veces consecutivas, por lo que hemos finalizado el proceso y $\alpha_2=\Delta^0b_1b_2$ con $b_1=b_{1,1}$ y $b_2=b_{2,1}$. Obsérvese que el bloque que hemos pasado a la izquierda ($\sigma_2\sigma_1$) se corresponde con $b_{2,0}\land (b_{1,0}^{-1}\Delta)$ y el bloque resultante $(\sigma_3\sigma_1\sigma_2\sigma_1)$ se corresponde con $\alpha_2\land\Delta$ en el algoritmo original de El-rifai y Morton. Además es claro que ninguno de los factores es una potencia de $\Delta$.
 	\end{ejemplo}
+	
+	
 
 \nocite{*}
 \printbibliography[heading=bibintoc]

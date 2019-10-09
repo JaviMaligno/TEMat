@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.0 $
+% $ biblatex bbl format version 3.1 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -17,6 +17,56 @@
 \endgroup
 
 \datalist[entry]{nyvt/global//global/global}
+  \entry{Aluffi}{book}{}
+    \name{author}{1}{}{%
+      {{hash=AP}{%
+         family={Aluffi},
+         familyi={A\bibinitperiod},
+         given={Paolo},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \list{language}{1}{%
+      {Ingl{\'e}s}%
+    }
+    \list{publisher}{1}{%
+      {American Mathematical Society}%
+    }
+    \strng{namehash}{AP1}
+    \strng{fullhash}{AP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{shorttitle}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{abstract}{%
+    Algebra: Chapter 0 is a self-contained introduction to the main topics of
+  algebra, suitable for a first sequence on the subject at the beginning
+  graduate or upper undergraduate level. The primary distinguishing feature of
+  the book, compared to standard textbooks in algebra, is the early
+  introduction of categories, used as a unifying theme in the presentation of
+  the main topics. A second feature consists of an emphasis on homological
+  algebra: basic notions on complexes are presented as soon as modules have
+  been introduced, and an extensive last chapter on homological algebra can
+  form the basis for a follow-up introductory course on the subject.
+  Approximately 1,000 exercises both provide adequate practice to consolidate
+  the understanding of the main body of the text and offer the opportunity to
+  explore many other topics, including applications to number theory and
+  algebraic geometry. This will allow instructors to adapt the textbook to
+  their specific choice of topics and provide the independent reader with a
+  richer exposure to algebra. Many exercises include substantial hints, and
+  navigation of the topics is facilitated by an extensive index and by hundreds
+  of cross-references.%
+    }
+    \field{isbn}{978-0-8218-4781-7}
+    \field{shorttitle}{Algebra}
+    \field{title}{Algebra: {Chapter} 0}
+    \list{location}{1}{%
+      {Providence, R.I}%
+    }
+    \field{month}{07}
+    \field{year}{2009}
+  \endentry
+
   \entry{aguilar_martin_problema_2018}{article}{}
     \name{author}{1}{}{%
       {{hash=A}{%
@@ -80,9 +130,6 @@
     \endverb
     \field{month}{06}
     \field{year}{2018}
-    \field{urlday}{29}
-    \field{urlmonth}{05}
-    \field{urlyear}{2019}
   \endentry
 
   \entry{Artin}{article}{}
@@ -110,9 +157,6 @@
     \field{number}{1}
     \field{pages}{101}
     \field{title}{Theory of {Braids}}
-    \verb{url}
-    \verb https://www.jstor.org/stable/1969218?origin=crossref
-    \endverb
     \field{volume}{48}
     \verb{file}
     \verb Artin - 1947 - Theory of Braids.pdf:C\:\\Users\\Javi\\Zotero\\storage
@@ -121,9 +165,6 @@
     \field{journaltitle}{The Annals of Mathematics}
     \field{month}{01}
     \field{year}{1947}
-    \field{urlday}{21}
-    \field{urlmonth}{07}
-    \field{urlyear}{2019}
   \endentry
 
   \entry{ArtinA}{article}{}
@@ -151,11 +192,9 @@
     \field{number}{1}
     \field{pages}{47\bibrangedash 72}
     \field{title}{Theorie der {Z{\"o}pfe}}
-    \verb{url}
-    \verb https://doi.org/10.1007/BF02950718
-    \endverb
     \field{volume}{4}
-    \field{journaltitle}{Abh.Math.Semin.Univ.Hambg.}
+    \field{journaltitle}{Abhandlungen aus dem Mathematischen Seminar der
+  Universität Hamburg}
     \field{month}{12}
     \field{year}{1925}
     \field{urlday}{21}
@@ -190,16 +229,10 @@
     \field{isbn}{978-1-4008-8142-0}
     \field{title}{Braids, {Links}, and {Mapping} {Class} {Groups}. ({AM}-82),
   {Volume} 82}
-    \verb{url}
-    \verb https://www.degruyter.com/viewbooktoc/product/474501
-    \endverb
     \list{location}{1}{%
       {Princeton}%
     }
     \field{year}{2016}
-    \field{urlday}{21}
-    \field{urlmonth}{07}
-    \field{urlyear}{2019}
   \endentry
 
   \entry{Clifford}{book}{}
@@ -275,11 +308,8 @@
     \field{number}{1}
     \field{pages}{116\bibrangedash 144}
     \field{title}{{\"U}ber unendliche diskontinuierliche {Gruppen}}
-    \verb{url}
-    \verb https://doi.org/10.1007/BF01456932
-    \endverb
     \field{volume}{71}
-    \field{journaltitle}{Math. Ann.}
+    \field{journaltitle}{Mathematische Annalen}
     \field{month}{03}
     \field{year}{1911}
     \field{urlday}{21}
@@ -312,11 +342,8 @@
     \field{number}{3}
     \field{pages}{413\bibrangedash 421}
     \field{title}{Transformation der {Kurven} auf zweiseitigen {Fl{\"a}chen}}
-    \verb{url}
-    \verb https://doi.org/10.1007/BF01456725
-    \endverb
     \field{volume}{72}
-    \field{journaltitle}{Math. Ann.}
+    \field{journaltitle}{Mathematische Annalen}
     \field{month}{09}
     \field{year}{1912}
     \field{urlday}{21}
@@ -380,9 +407,6 @@
     \field{number}{2}
     \field{pages}{267\bibrangedash 306}
     \field{title}{Groupes de {Garside}}
-    \verb{url}
-    \verb http://www.sciencedirect.com/science/article/pii/S001295930201090X
-    \endverb
     \field{volume}{35}
     \verb{file}
     \verb ScienceDirect Snapshot:C\:\\Users\\Javi\\Zotero\\storage\\W38WSIZH\\S
@@ -392,9 +416,6 @@
   Normale Sup{\'e}rieure}
     \field{month}{01}
     \field{year}{2002}
-    \field{urlday}{21}
-    \field{urlmonth}{07}
-    \field{urlyear}{2019}
   \endentry
 
   \entry{EM}{article}{}
@@ -513,10 +534,7 @@
     \field{issn}{0033-5606}
     \field{number}{1}
     \field{pages}{235\bibrangedash 254}
-    \field{title}{{THE} {BRAID} {GROUP} {AND} {OTHER} {GROUPS}}
-    \verb{url}
-    \verb https://academic.oup.com/qjmath/article/20/1/235/1539507
-    \endverb
+    \field{title}{{The} {braid} {group} {and} {other} {groups}}
     \field{volume}{20}
     \verb{file}
     \verb Full Text PDF:C\:\\Users\\Javi\\Zotero\\storage\\58KYWTGG\\Garside -
@@ -571,9 +589,6 @@
     \field{number}{318}
     \field{pages}{2027\bibrangedash 2045}
     \field{title}{Polynomial braid combing}
-    \verb{url}
-    \verb https://www.ams.org/mcom/2019-88-318/S0025-5718-2018-03392-0/
-    \endverb
     \field{volume}{88}
     \verb{file}
     \verb Snapshot:C\:\\Users\\Javi\\Zotero\\storage\\R48PAQY7\\home.html:text/
@@ -583,9 +598,6 @@
     \endverb
     \field{journaltitle}{Math. Comp.}
     \field{year}{2019}
-    \field{urlday}{21}
-    \field{urlmonth}{07}
-    \field{urlyear}{2019}
   \endentry
 
   \entry{Hur}{article}{}
@@ -614,21 +626,77 @@
     \field{pages}{1\bibrangedash 60}
     \field{title}{{\"U}ber {Riemann}'sche {Fl{\"a}chen} mit gegebenen
   {Verzweigungspunkten}}
-    \verb{url}
-    \verb https://doi.org/10.1007/BF01199469
-    \endverb
     \field{volume}{39}
     \verb{file}
     \verb Versi{\'o}n enviada:C\:\\Users\\Javi\\Zotero\\storage\\QJETDCGY\\Hurw
     \verb itz - 1891 - Ueber Riemann'sche Fl{\"a}chen mit gegebenen Verzweigu.p
     \verb df:application/pdf
     \endverb
-    \field{journaltitle}{Math. Ann.}
+    \field{journaltitle}{Mathematische Annalen}
     \field{month}{03}
     \field{year}{1891}
-    \field{urlday}{21}
-    \field{urlmonth}{07}
-    \field{urlyear}{2019}
+  \endentry
+
+  \entry{reduced}{incollection}{}
+    \name{author}{2}{}{%
+      {{hash=LRC}{%
+         family={Lyndon},
+         familyi={L\bibinitperiod},
+         given={Roger\bibnamedelima C.},
+         giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+      {{hash=SPE}{%
+         family={Schupp},
+         familyi={S\bibinitperiod},
+         given={Paul\bibnamedelima E.},
+         giveni={P\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+    }
+    \name{editor}{2}{}{%
+      {{hash=LRC}{%
+         family={Lyndon},
+         familyi={L\bibinitperiod},
+         given={Roger\bibnamedelima C.},
+         giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+      {{hash=SPE}{%
+         family={Schupp},
+         familyi={S\bibinitperiod},
+         given={Paul\bibnamedelima E.},
+         giveni={P\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+    }
+    \list{language}{1}{%
+      {en}%
+    }
+    \list{publisher}{1}{%
+      {Springer Berlin Heidelberg}%
+    }
+    \keyw{Finite Index, Free Group, Free Product, Fuchsian Group, Normal
+  Closure}
+    \strng{namehash}{LRCSPE1}
+    \strng{fullhash}{LRCSPE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \field{abstract}{%
+    Informally, a group is free on a set of generators if no relation holds
+  among these generators except the trivial relations that hold among any set
+  of elements in any group. We make this precise as follows.%
+    }
+    \field{booktitle}{Combinatorial {Group} {Theory}}
+    \verb{doi}
+    \verb 10.1007/978-3-642-61896-3_1
+    \endverb
+    \field{isbn}{978-3-642-61896-3}
+    \field{pages}{1\bibrangedash 86}
+    \field{series}{Classics in {Mathematics}}
+    \field{title}{Free {Groups} and {Their} {Subgroups}}
+    \list{location}{1}{%
+      {Berlin, Heidelberg}%
+    }
+    \field{year}{2001}
   \endentry
 
   \entry{combinatorial}{incollection}{}
@@ -688,16 +756,10 @@
     \field{pages}{87\bibrangedash 113}
     \field{series}{Classics in {Mathematics}}
     \field{title}{Generators and {Relations}}
-    \verb{url}
-    \verb https://doi.org/10.1007/978-3-642-61896-3_2
-    \endverb
     \list{location}{1}{%
       {Berlin, Heidelberg}%
     }
     \field{year}{2001}
-    \field{urlday}{23}
-    \field{urlmonth}{07}
-    \field{urlyear}{2019}
   \endentry
 
   \entry{Magnus}{article}{}
@@ -726,16 +788,10 @@
     \field{pages}{617\bibrangedash 646}
     \field{title}{{\"U}ber {Automorphismen} von {Fundamentalgruppen} berandeter
   {Fl{\"a}chen}}
-    \verb{url}
-    \verb https://doi.org/10.1007/BF01449158
-    \endverb
     \field{volume}{109}
-    \field{journaltitle}{Math. Ann.}
+    \field{journaltitle}{Mathematische Annalen}
     \field{month}{12}
     \field{year}{1934}
-    \field{urlday}{21}
-    \field{urlmonth}{07}
-    \field{urlyear}{2019}
   \endentry
 
   \entry{Markoff}{article}{}
@@ -756,40 +812,14 @@
     \field{labeltitlesource}{title}
     \field{sortinit}{M}
     \field{sortinithash}{M}
-    \field{pages}{51}
+    \field{pages}{614\bibrangedash 621}
     \field{title}{Foundations of the algebraic theory of tresses}
     \verb{file}
     \verb Markoff - Foundations of the algebraic theory of tresses.pdf:C\:\\Use
     \verb rs\\Javi\\Zotero\\storage\\B94QTMAV\\Markoff - Foundations of the alg
     \verb ebraic theory of tresses.pdf:application/pdf
     \endverb
-  \endentry
-
-  \entry{markoff_foundations_nodate-1}{article}{}
-    \name{author}{1}{}{%
-      {{hash=MA}{%
-         family={Markoff},
-         familyi={M\bibinitperiod},
-         given={A},
-         giveni={A},
-      }}%
-    }
-    \list{language}{1}{%
-      {ru}%
-    }
-    \strng{namehash}{MA1}
-    \strng{fullhash}{MA1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{sortinit}{M}
-    \field{sortinithash}{M}
-    \field{pages}{51}
-    \field{title}{Foundations of the algebraic theory of tresses}
-    \verb{file}
-    \verb Markoff - Foundations of the algebraic theory of tresses.pdf:C\:\\Use
-    \verb rs\\Javi\\Zotero\\storage\\KVPMBJL8\\Markoff - Foundations of the alg
-    \verb ebraic theory of tresses.pdf:application/pdf
-    \endverb
+    \field{journaltitle}{Russian mathematicians in the 20th century}
   \endentry
 
   \entry{Novikov}{article}{}
@@ -842,9 +872,6 @@
     \field{number}{3}
     \field{pages}{463\bibrangedash 477}
     \field{title}{Linear {Equations} in {Non}-{Commutative} {Fields}}
-    \verb{url}
-    \verb https://www.jstor.org/stable/1968245
-    \endverb
     \field{volume}{32}
     \field{journaltitle}{Annals of Mathematics}
     \field{year}{1931}
