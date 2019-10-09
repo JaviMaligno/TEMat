@@ -19,18 +19,16 @@
 \datalist[entry]{nyvt/global//global/global}
   \entry{aguilar_martin_problema_2018}{article}{}
     \name{author}{1}{}{%
-      {{hash=AMJ}{%
-         family={Aguilar\bibnamedelima Mart{\'i}n},
-         familyi={A\bibinitperiod\bibinitdelim M\bibinitperiod},
-         given={Javier},
-         giveni={J\bibinitperiod},
+      {{hash=A}{%
+         family={An{\'o}nimo},
+         familyi={A\bibinitperiod},
       }}%
     }
     \list{language}{1}{%
       {spa}%
     }
-    \strng{namehash}{AMJ1}
-    \strng{fullhash}{AMJ1}
+    \strng{namehash}{A1}
+    \strng{fullhash}{A1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
     \field{sortinit}{A}
@@ -74,9 +72,6 @@
   methods.%
     }
     \field{title}{El problema de la palabra en los grupos de trenzas}
-    \verb{url}
-    \verb https://idus.us.es/xmlui/handle/11441/77489
-    \endverb
     \verb{file}
     \verb Full Text PDF:C\:\\Users\\Javi\\Zotero\\storage\\QRRKL5JR\\Aguilar Ma
     \verb rt{\'i}n - 2018 - El problema de la palabra en los grupos de trenzas.
@@ -636,6 +631,75 @@
     \field{urlyear}{2019}
   \endentry
 
+  \entry{combinatorial}{incollection}{}
+    \name{author}{2}{}{%
+      {{hash=LRC}{%
+         family={Lyndon},
+         familyi={L\bibinitperiod},
+         given={Roger\bibnamedelima C.},
+         giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+      {{hash=SPE}{%
+         family={Schupp},
+         familyi={S\bibinitperiod},
+         given={Paul\bibnamedelima E.},
+         giveni={P\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+    }
+    \name{editor}{2}{}{%
+      {{hash=LRC}{%
+         family={Lyndon},
+         familyi={L\bibinitperiod},
+         given={Roger\bibnamedelima C.},
+         giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+      {{hash=SPE}{%
+         family={Schupp},
+         familyi={S\bibinitperiod},
+         given={Paul\bibnamedelima E.},
+         giveni={P\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+    }
+    \list{language}{1}{%
+      {en}%
+    }
+    \list{publisher}{1}{%
+      {Springer Berlin Heidelberg}%
+    }
+    \keyw{Conjugacy Problem, Free Product, Free Resolution, Normal Closure,
+  Word Problem}
+    \strng{namehash}{LRCSPE1}
+    \strng{fullhash}{LRCSPE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \field{abstract}{%
+    Groups are very often described as quotient groups of free groups: G = F/N.
+  If F is free with basis X and N is the normal closure in F of a set R, we say
+  that the pair (X; R) is a presentation for G, and, by a mild abuse of
+  language, we write G = (X; R).%
+    }
+    \field{booktitle}{Combinatorial {Group} {Theory}}
+    \verb{doi}
+    \verb 10.1007/978-3-642-61896-3_2
+    \endverb
+    \field{isbn}{978-3-642-61896-3}
+    \field{pages}{87\bibrangedash 113}
+    \field{series}{Classics in {Mathematics}}
+    \field{title}{Generators and {Relations}}
+    \verb{url}
+    \verb https://doi.org/10.1007/978-3-642-61896-3_2
+    \endverb
+    \list{location}{1}{%
+      {Berlin, Heidelberg}%
+    }
+    \field{year}{2001}
+    \field{urlday}{23}
+    \field{urlmonth}{07}
+    \field{urlyear}{2019}
+  \endentry
+
   \entry{Magnus}{article}{}
     \name{author}{1}{}{%
       {{hash=MW}{%
@@ -674,7 +738,7 @@
     \field{urlyear}{2019}
   \endentry
 
-  \entry{markoff_foundations_nodate}{article}{}
+  \entry{Markoff}{article}{}
     \name{author}{1}{}{%
       {{hash=MA}{%
          family={Markoff},
