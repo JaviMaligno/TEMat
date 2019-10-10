@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.0 $
+% $ biblatex bbl format version 3.1 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -343,9 +343,6 @@
     \field{journaltitle}{Mathematische Annalen}
     \field{month}{09}
     \field{year}{1912}
-    \field{urlday}{21}
-    \field{urlmonth}{07}
-    \field{urlyear}{2019}
   \endentry
 
   \entry{Dehornoy}{article}{}
@@ -814,6 +811,7 @@
     \verb ebraic theory of tresses.pdf:application/pdf
     \endverb
     \field{journaltitle}{Russian mathematicians in the 20th century}
+    \field{year}{2003}
   \endentry
 
   \entry{Novikov}{article}{}
@@ -828,13 +826,16 @@
     \list{language}{1}{%
       {ru}%
     }
+    \list{publisher}{1}{%
+      {Acad. Sci. USSR, Moscow}%
+    }
     \strng{namehash}{NPS1}
     \strng{fullhash}{NPS1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
     \field{sortinit}{N}
     \field{sortinithash}{N}
-    \field{pages}{143}
+    \field{pages}{1\bibrangedash 143}
     \field{title}{On the algorithmic unsolvability of the word problem in group
   theory}
     \verb{file}
@@ -842,6 +843,8 @@
     \verb \Users\\Javi\\Zotero\\storage\\4HAX8QN3\\Novikov - On the algorithmic
     \verb  unsolvability of the word probl.pdf:application/pdf
     \endverb
+    \field{journaltitle}{Trudy Mat. Inst. Steklov.,44}
+    \field{year}{1955}
   \endentry
 
   \entry{Ore}{article}{}
