@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.1 $
+% $ biblatex bbl format version 3.0 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -194,7 +194,7 @@
     \field{title}{Theorie der {Z{\"o}pfe}}
     \field{volume}{4}
     \field{journaltitle}{Abhandlungen aus dem Mathematischen Seminar der
-  Universit‰t Hamburg}
+  Universit√§t Hamburg}
     \field{month}{12}
     \field{year}{1925}
     \field{urlday}{21}
@@ -312,9 +312,6 @@
     \field{journaltitle}{Mathematische Annalen}
     \field{month}{03}
     \field{year}{1911}
-    \field{urlday}{21}
-    \field{urlmonth}{07}
-    \field{urlyear}{2019}
   \endentry
 
   \entry{Dehn12}{article}{}
@@ -544,9 +541,6 @@
     \field{journaltitle}{Q J Math}
     \field{month}{01}
     \field{year}{1969}
-    \field{urlday}{21}
-    \field{urlmonth}{07}
-    \field{urlyear}{2019}
   \endentry
 
   \entry{polynomial}{article}{}
@@ -875,9 +869,6 @@
     \field{volume}{32}
     \field{journaltitle}{Annals of Mathematics}
     \field{year}{1931}
-    \field{urlday}{21}
-    \field{urlmonth}{07}
-    \field{urlyear}{2019}
   \endentry
 \enddatalist
 \endinput

@@ -17,7 +17,7 @@
 
 
 %Mis paquetes
-\UseRawInputEncoding
+%\UseRawInputEncoding
 
 \usepackage{multirow}
 \usepackage{tikz-cd}
@@ -35,11 +35,17 @@
 
 %Mis comandos
 \DeclareSymbolFontAlphabet{\amsmathbb}{AMSb}
-\newcommand{\Z}{\amsmathbb{Z}}
+%\newcommand{\Z}{\amsmathbb{Z}}
+%\newcommand{\B}{\mathbb{B}}
+%\newcommand{\N}{\amsmathbb{N}}
+%\newcommand{\R}{\amsmathbb{R}}
+%\newcommand{\CC}{\amsmathbb{C}}
+
+\newcommand{\Z}{\mathbb{Z}}
 \newcommand{\B}{\mathbb{B}}
-\newcommand{\N}{\amsmathbb{N}}
-\newcommand{\R}{\amsmathbb{R}}
-\newcommand{\CC}{\amsmathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
 
 
 \providecommand{\gene}[1]{\langle{#1}\rangle}
@@ -88,20 +94,7 @@ El nombre de este problema proviene de que podemos considerar el alfabeto $\Sigm
 El propio Dehn describió algoritmos para resolver el problema de la palabra en grupos fundamentales de 2-variedades orientables cerradas con género mayor o igual que 2 \cite{Dehn12}. Sin embargo, en 1955 Pyotr Novikov encontró ejemplos de grupos finitamente presentados donde el problema de la palabra era indecidible \cite{Novikov}, es decir, que no se puede diseñar un algoritmo que lo resuelva. A pesar de esto, hay gran cantidad de grupos donde el problema de la palabra sí es resoluble. Ejemplos claros de ello son los grupos finitos y los grupos libres. Aquí estudiaremos los grupos de trenzas, que aparecen en numerosas ramas de las matemáticas como el álgebra, la topología, la criptografía y el análisis, y en los cuales el problema de la palabra es resoluble.
 
 En este artículo empezamos con algunos preliminares sobre teoría de grupos y topología. A continuación introducimos los grupos de trenzas, destacando los subgrupos de trenzas puras y las presentaciones de dichos grupos. Por último describimos una estructura en los grupos de trenzas basada en unos monoides incluidos en los grupos. Esta estructura permite resolver el problema de la palabra.
-%Esta es la plantilla de artículos para la revista TEMat.
-%En ella recogemos todas las instrucciones básicas sobre cómo crear artículos en \LaTeX{} de acuerdo a los criterios editoriales de TEMat.
-%Hay varios documentos que forman parte de la plantilla.
-%Los más importantes son el documento \verb+TEMat-article.cls+, que forma una clase que incluye todo el formato de la revista y \textbf{NO} se debe modificar; el documento \verb+PlantillaTEMat.tex+, que sirve para crear artículos, y el documento \verb+plantilla.bib+, que sirve para crear bibliografías que después se importan al artículo.
-%Además, están los archivos \verb+latexmkrc+ (necesario para los que utilicen \verb+latexmk+), y \verb+triangulo.tex+ y \verb+triangulo-ps.tex+ (que proporcionan ejemplos de figuras en \verb+tikz+ y en \verb+pstrics+), así como los diagramas \verb+triangulo-precompilado.pdf+ y \verb+triangulo-ps-precompilado.pdf+ como muestra para la inclusión de figuras.
-%Finalmente, el documento \verb+PlantillaTEMat.pdf+ permite ver el resultado después de compilar.
-%Si no puedes compilar la plantilla, eso quiere decir que faltan paquetes en tu ordenador, y se deben instalar.
-%Si el resultado de la compilación es distinto del ofrecido en el pdf, también hay algún problema.
-%Se puede compilar con \verb+pdflatex+, \verb+lualatex+ o \verb+xelatex+ (preferimos uno de los dos primeros, y en principio nosotros compilaremos con el segundo).
-%No damos soporte a compilaciones que no sean en modo pdf (\verb|latex+dvips+ps2pdf| u otras).
-%
-%Esta plantilla (especialmente el documento \verb+TEMat-article.cls+) podría ser revisada y modificada a lo largo del tiempo.
-%Recomendamos a los autores que descarguen la versión más reciente de la clase para trabajar.
-%En caso de encontrar un error o tener algún problema, contactad con los editores de TEMat a través del correo \email{publicaciones@anemat.com}.
+
 
 \section{Preliminares}
 
@@ -202,7 +195,7 @@ Vamos a concentrarnos a partir de ahora en presentaciones \textbf{finitas}, es d
 	Si $\gene{X\mid R}\cong\gene{X\mid R'}$ son presentaciones finitas, entonces se puede obtener una presentación de la otra mediante una sucesión finita de transformaciones de Tietze.
 \end{teorema}
 
-Volviendo al problema de la palabra, sea $\gene{X\mid R}$ una presentación finita de un grupo $G$ y $w\in (X\cup X^{-1})^*$. Entonces $w=_G 1$ si y solo si $w\in \gene{R^{\gene{X\mid\ }}}$ si y solo si $w=\displaystyle\prod_{i=1}^M p_ir_i^{\varepsilon_i}p_i^{-1}$ en $\gene{X\mid\ }$ para algún $M\in\amsmathbb{N}$, algunos $r_i\in R$ y algunos $p_i\in\gene{X\mid\ }$, con $i\in\{1,\dots, M\}$ y $\varepsilon_i=\pm 1$. 
+Volviendo al problema de la palabra, sea $\gene{X\mid R}$ una presentación finita de un grupo $G$ y $w\in (X\cup X^{-1})^*$. Entonces $w=_G 1$ si y solo si $w\in \gene{R^{\gene{X\mid\ }}}$ si y solo si $w=\displaystyle\prod_{i=1}^M p_ir_i^{\varepsilon_i}p_i^{-1}$ en $\gene{X\mid\ }$ para algún $M\in\mathbb{N}$, algunos $r_i\in R$ y algunos $p_i\in\gene{X\mid\ }$, con $i\in\{1,\dots, M\}$ y $\varepsilon_i=\pm 1$. 
 
 
 \subsection{Relación entre monoides y grupos}
@@ -581,9 +574,9 @@ A partir de las observaciones anteriores, es claro que cualquier trenza se puede
 	\centering
 	\begin{tikzpicture}
 	\draw [line width=1.5pt, dash pattern=on 4pt off 4pt] (0,0.9)-- (0,4.2);
-	\draw (-0.7,0.7) node[anchor=north west] {$\amsmathbb{R}\times\{0\}$};
+	\draw (-0.7,0.7) node[anchor=north west] {$\mathbb{R}\times\{0\}$};
 	\draw [line width=1.5pt, dash pattern=on 4pt off 4pt] (9.1,0.9)-- (9.1,4.2);
-	\draw (8.4,0.7) node[anchor=north west] {$\amsmathbb{R}\times\{1\}$};
+	\draw (8.4,0.7) node[anchor=north west] {$\mathbb{R}\times\{1\}$};
 	\braid[rotate=90, number of strands=4, %lower bound
 	border height=2pt,style strands={1}{line width=2pt},style strands={2}{line width=2pt},style strands={3}{line width=2pt},style strands={4}{line width=2pt}, style floors={1}{dashed}] (braid) at (1,0)%optional, it's a name
 	a_1^{-1}a_3^{-1}a_2^{-1}a_1^{-1}a_3^{-1}a_2^{-1}a_3a_2^{-1}a_1^{-1};
