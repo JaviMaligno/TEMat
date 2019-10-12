@@ -2,11 +2,9 @@
 %%%%%%%%%%  PLANTILLA DE ARTÍCULO DE LA REVISTA TEMAT  %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Este archivo puede servir como plantilla a los interesados en presentar artículos a TEMat.
-% Hemos intentando dejar claro el uso de los distintos comandos habituales en su uso, así como ejemplos de los más importantes.
-% En caso de encontrar errores o tener problemas con las plantillas, por favor, contactad con publicaciones@anemat.com.
+
 \documentclass[bibtex, anon]{TEMat-article}
-%% Si estáis enviando el artículo a revisión, cargad la clase de la siguiente manera:
+
 % \documentclass[anon]{TEMat-article}
 
 %% Carga aquí los paquetes extra que quieras, intentando que no se salgan de las recomendaciones...
@@ -27,11 +25,6 @@
 \usetikzlibrary{decorations.shapes}
 \usetikzlibrary{arrows}
 
-%%%%%%%%%%%%% PARA USUARIOS DE PSTRICKS Y TIKZ %%%%%%%%%%%%%%%%%
-%% Os recomendamos que uséis TikZ, mejor que PSTricks.
-%% En cualquier caso, os pedimos que leáis la sección <<Detalles avanzados>> dentro de <<Figuras, dibujos y diagramas>>.
-%% de `PlantillaTEMat.tex'.
-%%%%%%%%%%%%% Fin para usuarios de PSTricks y TikZ
 
 %Mis comandos
 \DeclareSymbolFontAlphabet{\amsmathbb}{AMSb}
@@ -61,9 +54,7 @@
 \email{javiecija96@gmail.com}
 \affiliation{Universidad de Sevilla (US)}
 
-%\author*{TEMat, Comité editorial de}
-%\email{temat@temat.es}
-%\affiliation{Asociación Nacional de Estudiantes de Matemáticas (ANEM)}
+
 %\authornote{Los autores pueden tener notas al pie, por ejemplo, para indicar cambios de afiliación entre la actual y la que se tenía cuando empezó a desarrollarse el trabajo.}
 %% Estos nombres son inventados. En nombres de verdad, las partículas del apellido van con el apellido, por supuesto.
 %% Se pueden añadir tantos autores como sea necesario.
@@ -75,7 +66,7 @@
 \addbibresource{bibtrenzas.bib}
 
 \begin{document}
-% El resumen debe ser lo último en aparecer antes de empezar con el contenido del artículo.
+
 \begin{abstract}
 El problema de la palabra es uno de los problemas más importantes en teoría combinatoria de grupos. En este artículo presentamos una familia de grupos, los grupos de trenzas, donde es posible resolverlo, junto con uno de los algoritmos más eficientes que existen para ello. 
 \end{abstract}
@@ -144,7 +135,7 @@ Empezaremos hablando de monoides, puesto que dentro del grupo de trenzas hay un 
 \end{definicion}
 
 \begin{teorema}\cite[\S II.5]{Aluffi}
-	Dado un conjunto $X$, existe $(L,i)$ libre en $X$. %SI OCUPA MUCHO DEJARLO SIN PRUEBA Y REFERENCIARLO DEl ENLACE QUE TENGO ABAJO, SI LO DEJO REVISAR LA DEMO
+	Dado un conjunto $X$, existe $(L,i)$ libre en $X$. 
 \end{teorema}
 \begin{demostracion}
 	Sea $X^{-1}$ un conjunto en biyección con $X$ mediante $x\mapsto x^{-1}$. Por abuso de notación a la inversa también la denotamos $x\mapsto x^{-1}$. Sea $(X\cup X^{-1})^*$ el monoide de palabras en $X\cup X^{-1}$ con la concatenación. Decimos que $w=y_1\cdots y_n\in (X\cup X^{-1})^*$ es \textbf{reducida} si $\forall\ 1\leq i\leq n-1$, tenemos que $y_i\neq y_{i+1}^{-1}$. Si $w$ no es reducida, entonces $w'=y_1\cdots y_{i-1}y_{i+2}\cdots y_n$, se ha obtenido a través de una \textbf{reducción elemental} y escribimos $w\to w'$. 
@@ -519,11 +510,7 @@ Normalmente, se representan las trenzas como su proyección en $\R\times[0,1]$ (
 	
 	\caption{Cruce positivo y cruce negativo, respectivamente.}\label{cruce}
 	\end{figure}
-%Todo artículo debe seguir una estructura que convierta su lectura en algo agradable y permita seguir los argumentos con mayor facilidad.
-%Habitualmente, esta estructura se ve reforzada utilizando secciones y subsecciones.
-%Para crear una sección basta con usar el comando \verb+\section{nombre}+.
-%Para crear subsecciones, se debe usar \verb+\subsection{nombre}+.
-%Existe la posibilidad de llegar hasta las subsubsecciones, pero recomendamos encarecidamente que no se haga esto.
+
 
 
 \begin{defi}\label{estandar}
@@ -706,10 +693,10 @@ A_{ij}=\sigma_{j-1}\dots\sigma_{i+1}\sigma_i^2\sigma_{i+1}^{-1}\dots\sigma_{j-1}
 \end{equation}
 y las relaciones %n!2(n-1)
 \begin{align*}
-A_{ij}^{-1}A_{rs}A_{ij}&=A_{rs}\text{ si } (i<j<r<s)\text{ o bien } (r+1<i<j<s),\\
-A_{ij}^{-1}A_{js}A_{ij}&=A_{is}A_{js}A_{is}^{-1} \text{ si } (i<j<s),\\
-A_{ij}^{-1}A_{is}A_{ij}&=A_{is}A_{js}A_{is}A_{js}^{-1}A_{is}^{-1}\text{ si } (i<j<s),\\
-A_{ij}^{-1}A_{rs}A_{ij}&=A_{is}A_{js}A_{is}^{-1}A_{js}^{-1}A_{rs}A_{js}A_{is}A_{js}^{-1}A_{is}^{-1}\text{ si } (i+1<r<j<s).
+A_{ij}^{-1}A_{rs}A_{ij}&=A_{rs} & & (i<j<r<s)\text{ o bien } (r+1<i<j<s),\\
+A_{ij}^{-1}A_{js}A_{ij}&=A_{is}A_{js}A_{is}^{-1} & &(i<j<s),\\
+A_{ij}^{-1}A_{is}A_{ij}&=A_{is}A_{js}A_{is}A_{js}^{-1}A_{is}^{-1} & &(i<j<s),\\
+A_{ij}^{-1}A_{rs}A_{ij}&=A_{is}A_{js}A_{is}^{-1}A_{js}^{-1}A_{rs}A_{js}A_{is}A_{js}^{-1}A_{is}^{-1} & &(i+1<r<j<s).
 \end{align*}
 
 En la \cref{generador} se puede observar qué trenza representa geométricamente el generador $A_{ij}$. 
@@ -795,7 +782,7 @@ En la prueba original se prueba también que $B_n^+$ es cancelativo, es decir, $
 Como las relaciones de (\ref{presentacion}) son homogéneas, palabras equivalentes en $B_n^+$ tienen la misma longitud, por lo que la longitud de una trenza positiva se define como la longitud de cualquier palabra que la represente.  
 
 %relaciones homogéneas= LA SUMA DE LOS EXPONENTES A UN LADO Y A OTRO DE LA ECUACIÓN ES LA MISMA
-%lo de dehornoy lo tengo en el mismo papel donde me explica el 1.2 de Garside y lo de que los sigma_i son sufijos de Delta. Lo del mcm es lo de las flechitas y el mcd es los bloques
+
 
 Garside después estudia el siguiente elemento especial.
 \begin{definicion}
